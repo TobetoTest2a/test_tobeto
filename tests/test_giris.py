@@ -1,12 +1,14 @@
 import pytest
 from selenium import webdriver
 from pages.giris import *
+from pages.PageBase import PageBase
 import softest
 import unittest
 
 
 @pytest.mark.usefixtures("setup")
 class TestTobetoGiris(softest.TestCase, unittest.TestCase):
+
     
     def test_valid_login(self):
         giris_instance = Giris(self.driver) #baska sayfadan cagırılan fonksiyon
