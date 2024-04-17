@@ -3,16 +3,16 @@ import pytest
 
 #from webdriver_manager.chrome import ChromeDriverManager
 #from selenium.webdriver.chrome.service import Service as ChromeService
-#from pages.constants.globalConstants import *
+from pages.constants.globalConstants import *
 
 
 @pytest.fixture(scope="class")
 def setup(request):
     driver = webdriver.Chrome()
-    driver.get("https://tobeto.com/giris")
+    driver.get(BASE_URL)
     driver.maximize_window()
     request.cls.driver = driver
-    yield
+    yield driver
     driver.quit()
 
     

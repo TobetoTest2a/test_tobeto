@@ -3,7 +3,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from pages.PageBase import PageBase
-from pages.constants.globalConstants import *
+from pages.constants.login_constants import *
 
 
 @pytest.mark.usefixtures("setup")
@@ -13,19 +13,41 @@ class Giris(PageBase):
         self.driver = driver
 
     def ana_giris(self):
-        user_name= self.wait_element_visibility(USERNAME_LOCATED)
-        user_name.send_keys("tobeto.0001@gmail.com")
-        password = WebDriverWait(self.driver, 10).until(expected_conditions.presence_of_element_located(PASSWORD_LOCATED))
-        password.send_keys("123456")
-        WebDriverWait(self.driver, 10).until(expected_conditions.presence_of_element_located((By.CLASS_NAME, GIRISYAPBUTTON))).click()
+        user_name= self.wait_element_visibility(USERNAME_LOCATOR)
+        user_name.send_keys(GIRISMAIL)
+        password = self.wait_element_visibility(PASSWORD_LOCATOR)
+        password.send_keys(GIRISSIFRE)
+        self.wait_element_visibility(GIRISYAPBUTTON_LOCATOR).click()
         
     
     def gecerli_giris(self):
         self.ana_giris()
-        actual_basarili_popup = WebDriverWait(self.driver, 10).until(expected_conditions.presence_of_element_located(BASARILIPOPUP))
-        #assert actual_basarili_popup.text ==  BASARILI_POPUP_TEXT
-        return actual_basarili_popup.text
-        #self.soft_assert(self.assertEqual, actual_basarili_popup.text, BASARILI_POPUP_TEXT, "Basarili pop up goruntulenemedi.")
+        toast_message_basarılı = self.wait_element_presence(TOASTMESSAGE_LOCATOR)
+        #assert toast_message_basarılı.text ==  BASARILI_POPUP_TEXT
+        return toast_message_basarılı.text
+        #self.soft_assert(self.assertEqual, toast_message_basarılı.text, BASARILI_POPUP_TEXT, "Basarili pop up goruntulenemedi.")
+
+    def gecersiz_giris(self):
+        user_name= self.wait_element_visibility(USERNAME_LOCATOR)
+        user_name.send_keys(GECERSIZMAIL)
+        password = self.wait_element_visibility(PASSWORD_LOCATOR)
+        password.send_keys(GECERSIZSIFRE)
+        self.wait_element_visibility(GIRISYAPBUTTON_LOCATOR).click()
+        toast_message_gercersiz = self.wait_element_presence(TOASTMESSAGE_LOCATOR)
+        return toast_message_gercersiz.text
+    
+    def bos_giris(self):
+        user_name= self.wait_element_visibility(USERNAME_LOCATOR)
+        user_name.send_keys("")
+        password = self.wait_element_visibility(PASSWORD_LOCATOR)
+        password.send_keys("")
+        self.wait_element_visibility(GIRISYAPBUTTON_LOCATOR).click()
+        error_line_mail = self.wait_element_presence(BOS_ERROR_LINE_MAIL)
+        error_line_password = self.wait_element_presence(BOS_ERROR_LINE_PASSWORD)
+        return error_line_mail.text, error_line_password.text
+
+
+
         
        
         
