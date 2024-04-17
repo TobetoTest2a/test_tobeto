@@ -11,7 +11,7 @@ class Giris(PageBase):
     def __init__(self,driver):
         super().__init__(driver)
         self.driver = driver
-    
+
     def ana_giris(self):
         user_name= self.wait_element_visibility(USERNAME_LOCATED)
         user_name.send_keys("tobeto.0001@gmail.com")
