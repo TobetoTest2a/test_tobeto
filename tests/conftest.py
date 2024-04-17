@@ -1,5 +1,6 @@
 from selenium import webdriver
 import pytest
+
 #from webdriver_manager.chrome import ChromeDriverManager
 #from selenium.webdriver.chrome.service import Service as ChromeService
 #from pages.constants.globalConstants import *
@@ -13,6 +14,7 @@ def setup(request):
     request.cls.driver = driver
     yield
     driver.quit()
+
     
  #service=ChromeService(ChromeDriverManager().install())   
     
