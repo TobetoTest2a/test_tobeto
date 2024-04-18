@@ -25,3 +25,10 @@ class PageBase:
 
     def wait_alert_presence(self):
         WebDriverWait(self.driver, 10).until(expected_conditions.alert_is_present())
+
+
+    def get_title(self):
+        return self.driver.title
+    
+    def get_URL(self):
+        return self.driver.current_url
