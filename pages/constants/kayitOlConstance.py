@@ -49,4 +49,9 @@ BOSEPOSTA_TEXT = "Geçersiz e-posta adresi*"
 YALNIS_SIFRE_POPUP_XPATH = (By.XPATH, "//body/div[@role='dialog']")
 YALNIS_SIFRE_POPUP_XPATH_TEXT = "• Şifreler Eşleşmedi"
 
+#mavcut eposta ile giris ve sonrasında gorunen popup
+MEVCUTSIFRE_TEXT = "Girdiginiz eposta adresi ile kayitli uyelik bulunmaktadir."
+MEVCUTSIFRE_POPUP_XPATH =  (By.XPATH, "//body/div[@role='dialog']")
+
+
 

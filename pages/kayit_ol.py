@@ -66,9 +66,9 @@ class KayitOlFonksiyonu(PageBase):
         zorunlu_alan = self.wait_element_visibility(ZORUNLU1) 
         time.sleep(5)
         zorunlu_alan_listesi = [zorunlu_alan]
-        zorunlu_alan = int(len(zorunlu_alan_listesi))
+        zorunlu_alan_sayisi = int(len(zorunlu_alan_listesi))
         
-        return zorunlu_alan
+        return zorunlu_alan_sayisi
         
     
     def kayit_ol_biliglerini_epostasiz_doldurur(self):
@@ -102,6 +102,21 @@ class KayitOlFonksiyonu(PageBase):
         zorunlu_alan = self.wait_element_visibility(YALNIS_SIFRE_POPUP_XPATH)
         return zorunlu_alan.text
     
+        
+    def mevcut_eposta_ile_kayit(self):
+        self.wait_element_visibility(ILKKAYITOL).click()
+        self.wait_element_visibility(AD).send_keys(kullanici_ad)
+        self.wait_element_visibility(SOYAD).send_keys(kullanici_soyad)
+        self.wait_element_visibility(EPOSTA).send_keys("tobeto.0001@gmail.com")
+        self.wait_element_visibility(SIFRE).send_keys(valid_password)
+        self.driver.execute_script("scrollBy(0,500)")
+        time.sleep(2)
+        self.wait_element_visibility(SIFRETEKRAR).send_keys(valid_password)
+        self.wait_element_visibility(KAYITOL).click()
+        
+    def mevcut_eposta_popup_kontrolu(self):
+        zorunlu_alan = self.wait_element_visibility(MEVCUTSIFRE_POPUP_XPATH)
+        return zorunlu_alan.text
         
         
         

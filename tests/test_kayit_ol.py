@@ -11,35 +11,43 @@ import softest
 class TestKayitOl(softest.TestCase,PageBase):
 
     def test_basarili_kayit_ol(self):
-        kayitOl = KayitOlFonksiyonu(self.driver)
-        kayitOl.kayitOl_biliglerini_doldurur()
-        kayitOl.sozlesmeler_sayfasini_doldurur()
-        kayitOl.kaydetme_basarili()
-        self.soft_assert(self.assertEqual, GORUNECEKTEXT , kayitOl.kaydetme_basarili(), "MESAJ GORUNTULENEMEDİ.")
+        kayit_ol_object = KayitOlFonksiyonu(self.driver)
+        kayit_ol_object.kayitOl_biliglerini_doldurur()
+        kayit_ol_object.sozlesmeler_sayfasini_doldurur()
+        kayit_ol_object.kaydetme_basarili()
+        self.soft_assert(self.assertEqual, GORUNECEKTEXT , kayit_ol_object.kaydetme_basarili(), "MESAJ GORUNTULENEMEDİ.")
         #self.assert_all()
         
-    def test_bilgiler_bos_gecildiginde_uyari_meajlari_goruntulenmesi_fail(self):
-        kayitOl = KayitOlFonksiyonu(self.driver)
-        kayitOl.bos_kayit()  
+    def test_bilgiler_bos_gecildiginde_uyari_meajlari_goruntulenmesi_FAIL(self): # != SEKLİNDE YAZILDI
+        kayit_ol_object = KayitOlFonksiyonu(self.driver)
+        kayit_ol_object.bos_kayit()  
         beklenen_zorunlu_alan_sayisi = int(5)
-        self.soft_assert(self.assertEqual, beklenen_zorunlu_alan_sayisi, kayitOl.zorunlu_alan_karsilastirma(), "BEKLENILEN KADAR UYARI MESAJI ALINAMADI.")
+        self.soft_assert(self.assertTrue, beklenen_zorunlu_alan_sayisi != kayit_ol_object.zorunlu_alan_karsilastirma(), "BEKLENILEN POPUP GORUNTULENMEDI.")
         self.assert_all()
-        #assert beklenen_zorunlu_alan_sayisi == kayitOl.zorunlu_alan_karsilastirma()
         
     def test_gecersiz_eposta_mesaji_goruntulenmesi(self):
        kayit_ol_object = KayitOlFonksiyonu(self.driver)
        kayit_ol_object.kayit_ol_biliglerini_epostasiz_doldurur()
+       kayit_ol_object = KayitOlFonksiyonu(self.driver)
        time.sleep(5)
        self.soft_assert(self.assertEqual, kayit_ol_object.bos_eposta_uyari_mesaji_kontrolu() , BOSEPOSTA_TEXT, "BEKLENILEN UYARI MESAJI ALINAMADI.")
-       
-       #assert KayitOlFonksiyonu.bos_eposta_uyari_mesaji_kontrolu() == BOSEPOSTA
+       #assert kayit_ol_object.bos_eposta_uyari_mesaji_kontrolu() == BOSEPOSTA_TEXT
+       self.assert_all()
 
-    def test_sifre_eslesmedi_popup_goruntulenmesi_fail(self):  
+    def test_sifre_eslesmedi_popup_goruntulenmesi_FAIL(self):  #NOTEQUAL
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.sifre_tekrari_yalnis_doldurulur()
-        self.soft_assert(self.assertEqual, kayit_ol_object.sifre_eslesmedi_popup_kontrolu() , YALNIS_SIFRE_POPUP_XPATH_TEXT, "BEKLENILEN POPUP GORUNTULENMEDI.")
-        #self.assert_all()
-    
+        self.soft_assert(self.assertNotEqual, kayit_ol_object.sifre_eslesmedi_popup_kontrolu(), YALNIS_SIFRE_POPUP_XPATH_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {YALNIS_SIFRE_POPUP_XPATH_TEXT}")
+        self.assert_all()
+        
+    def test_mevcut_eposta_popup_goruntulenmesi_FAIL(self):
+         kayit_ol_object = KayitOlFonksiyonu(self.driver)
+         kayit_ol_object.mevcut_eposta_ile_kayit()
+         kayit_ol_object.mevcut_eposta_popup_kontrolu()
+         self.soft_assert(self.assertNotEqual, kayit_ol_object.mevcut_eposta_popup_kontrolu(), MEVCUTSIFRE_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {MEVCUTSIFRE_TEXT}")
+         self.assert_all()
+         
+        
 
-ttes = TestKayitOl()  
-ttes.test_sifre_eslesmedi_popup_goruntulenmesi_fail() 
+
+
