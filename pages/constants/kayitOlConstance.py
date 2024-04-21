@@ -53,5 +53,14 @@ YALNIS_SIFRE_POPUP_XPATH_TEXT = "• Şifreler Eşleşmedi"
 MEVCUTSIFRE_TEXT = "Girdiginiz eposta adresi ile kayitli uyelik bulunmaktadir."
 MEVCUTSIFRE_POPUP_XPATH =  (By.XPATH, "//body/div[@role='dialog']")
 
+#
+UZUN_TELNO_UYARISI_XPATH = (By.XPATH, "/html/body/div[4]/div/div/div/div/div/label[4]/small/p")
+UZUN_TELNO_UYARISI_TEXT = "En fazla 10 karakter girebilirsiniz."
+
+#Kisa tol no ile giris
+KISA_TELNO_XPATH = (By.XPATH,"/html/body/div[4]/div/div/div/div/div/label[4]/small/p")
+KISA_TELNO_TEXT = "En az 10 karakter girmelisiniz."
+#mevcut tel no ile kayit
+MEVCUT_TELNO_UYARISI_TEXT = "Girdiginiz telefon numarasi ile kayitli uyelik bulunmaktadir."
 
 

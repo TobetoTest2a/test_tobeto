@@ -115,8 +115,54 @@ class KayitOlFonksiyonu(PageBase):
         self.wait_element_visibility(KAYITOL).click()
         
     def mevcut_eposta_popup_kontrolu(self):
-        zorunlu_alan = self.wait_element_visibility(MEVCUTSIFRE_POPUP_XPATH)
-        return zorunlu_alan.text
+        mevcut_sifre_popup = self.wait_element_visibility(MEVCUTSIFRE_POPUP_XPATH)
+        return mevcut_sifre_popup.text
         
         
+    def uzun_telNo_ile_sozlesmeler_sayfasini_doldurulur(self): 
+        self.wait_element_visibility(ACIKRIZAMETNİ).click()
+        self.wait_element_visibility(UYELİKSOZLESMESİ).click()
+        self.wait_element_visibility(EPOSTAIZNI).click()
+        arama_izni = self.wait_element_visibility(ARAMAIZNI)
+        arama_izni.click()
+        telno_yaz =self.wait_element_visibility(TELNO)
+        telno_yaz.send_keys("123456878901234")
+        time.sleep(10)
+        #self.wait_element_visibility(ROBOTDEGILIM).click()
+        self.wait_element_visibility(DEVAMETBUTTON).click()
+     
+    def uzun_telNo_uyarisi_kontrolu(self):
+        uzun_eposta_uyarisi = self.wait_element_visibility(UZUN_TELNO_UYARISI_XPATH)
+        return uzun_eposta_uyarisi.text   
+    
+    def kisa_telNo_ile_sozlesmeler_sayfasini_doldurulur(self): 
+        self.wait_element_visibility(ACIKRIZAMETNİ).click()
+        self.wait_element_visibility(UYELİKSOZLESMESİ).click()
+        self.wait_element_visibility(EPOSTAIZNI).click()
+        arama_izni = self.wait_element_visibility(ARAMAIZNI)
+        arama_izni.click()
+        telno_yaz =self.wait_element_visibility(TELNO)
+        telno_yaz.send_keys("1")
+        time.sleep(30)
+        #self.wait_element_visibility(ROBOTDEGILIM).click()
+        self.wait_element_visibility(DEVAMETBUTTON).click()
+        
+    def kisa_telNo_uyarisi_kontrolu(self):
+        uzun_eposta_uyarisi = self.wait_element_visibility(KISA_TELNO_XPATH)
+        return uzun_eposta_uyarisi.text
+    
+    def mevcut_telNo_ile_sozlesmeler_sayfasi_doldurulur(self):
+        self.wait_element_visibility(ACIKRIZAMETNİ).click()
+        self.wait_element_visibility(UYELİKSOZLESMESİ).click()
+        self.wait_element_visibility(EPOSTAIZNI).click()
+        arama_izni = self.wait_element_visibility(ARAMAIZNI)
+        arama_izni.click()
+        telno_yaz =self.wait_element_visibility(TELNO)
+        telno_yaz.send_keys("5050000000")
+        time.sleep(50)
+        self.wait_element_visibility(DEVAMETBUTTON).click()
+        
+    def mevcut_telNo_uyarisi_kontrolu(self):
+        actual_telNo_uyarisi = self.wait_element_visibility(GORULECEKTEXT_LOCATE)
+        return actual_telNo_uyarisi.text
         
