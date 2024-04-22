@@ -36,7 +36,7 @@ class PageBase:
     def get_URL(self):
         return self.driver.current_url
 
-    def if_fail_screenshot(self, actual, expected, screenshot_path):
+    def if_assert_fail_screenshot(self, actual, expected, screenshot_path):
         try:
             assert actual == expected
         except AssertionError:
