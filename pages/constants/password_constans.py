@@ -10,6 +10,6 @@ GIRISMAIL = "tobeto.0001@gmail.com"
 SIFRE_POPUP_TEXT = "• Şifre sıfırlama linkini e-posta adresinize gönderdik. Lütfen gelen kutunuzu kontrol edin."
 SIFRE_GECERSIZ_MAIL_POPUP_TEXT = "• Girdiğiniz e-posta geçersizdir."
 SIFRE_GECERSIZ_KULLANICI_POPUP_TEXT = "• Kullanıcı bulunamadı."
-SCREENSHOT_FOLDER = r'C:\Users\oguzh\OneDrive\Masaüstü\test_tobeto\tests\test_sifre_sifirlama_gecersiz_kullanici_failure.png'
+SCREENSHOT_FOLDER = r'C:\Users\oguzh\OneDrive\Masaüstü\test_tobeto\screenshots\password\test_sifre_sifirlama_gecersiz_kullanici_failure.png'
 
 

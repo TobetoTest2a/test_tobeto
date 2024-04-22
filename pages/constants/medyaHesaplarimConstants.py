@@ -8,8 +8,8 @@ SAVE_SOCIALMEDIA = (By.XPATH, "//div[@id='__next']/div[@class='back-white']/main
 BASARILI_POPUP = (By.XPATH, "//div[@id='__next']//div[@role='alert']/div[@class='toast-body']")
 BASARILI_POPUP_TEXT = "• Sosyal medya adresiniz başarıyla eklendi."
 
-BOS_GECME_MESAJI = (By.CSS_SELECTOR, ".text-danger")
-BOS_GECME_TEXT = "Doldurulması zorunlu alan*"
+BLANK_AREA_CSS = (By.CSS_SELECTOR, ".text-danger")
+BLANK_AREA_TEXT = "Doldurulması zorunlu alan*"
 
 MEDIA_DELETE_BUTTON_XPATH = (By.XPATH, "/html//div[@id='__next']/div[@class='back-white']/main/section//div[@class='col-12 col-lg-9']//btn[@class='btn social-delete']")
 MEDIA_DELETE_CONFIRM_XPATH = (By.XPATH, "/html/body/div[@role='dialog']/div[@class='modal-dialog modal-dialog-centered']//button[@class='btn btn-yes my-3']")

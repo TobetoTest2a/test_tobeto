@@ -19,6 +19,7 @@ class Password(PageBase):
 
     def mail_input_gönder(self, data):
         mail_input_area = self.wait_element_visibility(MAIL_INPUT_LOCATOR)
+        sleep(3)
         self.wait_element_visibility(MAIL_INPUT_LOCATOR).send_keys(data)
         #mail_input_area.send_keys(data)
 

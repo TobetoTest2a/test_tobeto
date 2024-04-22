@@ -25,6 +25,7 @@ class TestTobetoGiris(softest.TestCase,PageBase):
         medya_hesaplarim.medya_url_gir()
         medya_hesaplarim.medya_kaydet()
         self.soft_assert(self.assertEqual, BASARILI_POPUP_TEXT, medya_hesaplarim.basarili_kaydetme(), "HATALI MESAJ")
+        self.assert_all()
 
     #PASS TEST
     def test_bos_alan_kontrolu(self):
@@ -39,10 +40,10 @@ class TestTobetoGiris(softest.TestCase,PageBase):
         medya_hesaplarim.medya_acilir_menu_tikla()
         medya_hesaplarim.medya_sec()
         medya_hesaplarim.medya_kaydet()
-        self.soft_assert(self.assertEqual, BOS_GECME_TEXT, medya_hesaplarim.bos_alan_kaydetme(), "HATALI MESAJ")
+        self.soft_assert(self.assertEqual, BLANK_AREA_TEXT, medya_hesaplarim.bos_alan_kaydetme(), "HATALI MESAJ")
         self.assert_all()
 
-
+    #PASS TEST AND SCREENSHOT
     def test_eklenen_medya_hesabi_kontrolu(self):
         giris = Giris(self.driver)
         yabanci_dillerim = Yabanci_dil_ekle(self.driver)
