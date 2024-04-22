@@ -62,8 +62,8 @@ class Medya_hesabi_bos_alan_kontrolu(PageBase):
         self.wait_element_visibility(SAVE_SOCIALMEDIA).click()
 
     def bos_alan_kaydetme(self):
-        actual_result_message = self.wait_element_presence(BOS_GECME_MESAJI)
-        actual_result_message.text
+        actual_result_message = self.wait_element_visibility(BLANK_AREA_CSS)
+        return actual_result_message.text
 
 class Eklenen_medya_hesabi_kontrolu(PageBase):
     def __init__(self,driver):
