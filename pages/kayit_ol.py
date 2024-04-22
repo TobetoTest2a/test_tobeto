@@ -127,8 +127,7 @@ class KayitOlFonksiyonu(PageBase):
         arama_izni.click()
         telno_yaz =self.wait_element_visibility(TELNO)
         telno_yaz.send_keys("123456878901234")
-        time.sleep(10)
-        #self.wait_element_visibility(ROBOTDEGILIM).click()
+        time.sleep(20) #CAPTCHA alanlarini gecebilmek icin verildi.
         self.wait_element_visibility(DEVAMETBUTTON).click()
      
     def uzun_telNo_uyarisi_kontrolu(self):
@@ -143,8 +142,7 @@ class KayitOlFonksiyonu(PageBase):
         arama_izni.click()
         telno_yaz =self.wait_element_visibility(TELNO)
         telno_yaz.send_keys("1")
-        time.sleep(30)
-        #self.wait_element_visibility(ROBOTDEGILIM).click()
+        time.sleep(10)  #CAPTCHA alanlarini gecebilmek icin verildi.
         self.wait_element_visibility(DEVAMETBUTTON).click()
         
     def kisa_telNo_uyarisi_kontrolu(self):
@@ -159,10 +157,14 @@ class KayitOlFonksiyonu(PageBase):
         arama_izni.click()
         telno_yaz =self.wait_element_visibility(TELNO)
         telno_yaz.send_keys("5050000000")
-        time.sleep(50)
+        time.sleep(10)  #CAPTCHA alanlarini gecebilmek icin verildi.
         self.wait_element_visibility(DEVAMETBUTTON).click()
         
     def mevcut_telNo_uyarisi_kontrolu(self):
         actual_telNo_uyarisi = self.wait_element_visibility(GORULECEKTEXT_LOCATE)
         return actual_telNo_uyarisi.text
+        
+    def is_koyitOl_button_enabled(self):
+        kayit_olB = self.wait_element_visibility(KAYITOL)
+        return kayit_olB.is_enabled()
         

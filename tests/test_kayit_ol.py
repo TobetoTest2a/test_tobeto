@@ -31,10 +31,9 @@ class TestKayitOl(softest.TestCase,PageBase):
        kayit_ol_object = KayitOlFonksiyonu(self.driver)
        time.sleep(5)
        self.soft_assert(self.assertEqual, kayit_ol_object.bos_eposta_uyari_mesaji_kontrolu() , BOSEPOSTA_TEXT, "BEKLENILEN UYARI MESAJI ALINAMADI.")
-       #assert kayit_ol_object.bos_eposta_uyari_mesaji_kontrolu() == BOSEPOSTA_TEXT
        self.assert_all()
 
-    def test_sifre_eslesmedi_popup_goruntulenmesi_FAIL(self):  #NOTEQUAL
+    def test_sifre_eslesmedi_popup_goruntulenmesi_FAIL(self):  
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.sifre_tekrari_yalnis_doldurulur()
         self.soft_assert(self.assertNotEqual, kayit_ol_object.sifre_eslesmedi_popup_kontrolu(), YALNIS_SIFRE_POPUP_XPATH_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {YALNIS_SIFRE_POPUP_XPATH_TEXT}")
@@ -50,6 +49,10 @@ class TestKayitOl(softest.TestCase,PageBase):
     def test_uzun_telefonNum_karakter_sayisi_uyarisi_kontrolu(self):
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.kayitOl_biliglerini_doldurur()
+        button_enable_mi = kayit_ol_object.is_koyitOl_button_enabled()
+        #kayit ol butonunun renginin degistiginin testi
+        self.soft_assert(self.assertTrue , button_enable_mi, "Button disable olmadi.")
+        self.assert_all()
         kayit_ol_object.uzun_telNo_ile_sozlesmeler_sayfasini_doldurulur()
         self.soft_assert(self.assertEqual, kayit_ol_object.uzun_telNo_uyarisi_kontrolu(), UZUN_TELNO_UYARISI_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {UZUN_TELNO_UYARISI_TEXT}")
         self.assert_all()
@@ -68,6 +71,7 @@ class TestKayitOl(softest.TestCase,PageBase):
         self.soft_assert(self.assertNotEqual, kayit_ol_object.mevcut_telNo_uyarisi_kontrolu(), MEVCUT_TELNO_UYARISI_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {MEVCUT_TELNO_UYARISI_TEXT}")
         self.assert_all()
          
+        
         
 
 
