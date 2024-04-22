@@ -5,7 +5,7 @@ import pytest
 from pages.constants.globalConstants import *
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def setup(request):
     driver = webdriver.Chrome()
     driver.get(BASE_URL)
