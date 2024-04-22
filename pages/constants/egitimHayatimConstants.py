@@ -1,27 +1,40 @@
-KAYDET_BUTONU = ".btn-primary" #CSS
-HATA_MESAJİ_EGİTİM_DURUMU = "div:nth-of-type(1) > .text-danger" #CSS
-HATA_MESAJİ_UNİVERSİTE = "div:nth-of-type(2) > .text-danger" #CSS
-HATA_MESAJİ_BOLUM = "div:nth-of-type(3) > .text-danger" #CSS
-HATA_MESAJİ_BASLANGİC_YİLİ =  "div:nth-of-type(4) > .text-danger" #CSS
-HATA_MESAJİ_MEZUNİYET_YİLİ = "div:nth-of-type(5) > span:nth-of-type(1)" #CSS
-HATA_MESAJİ_DEVAM_EDİYORUM = "div:nth-of-type(5) > span:nth-of-type(2)" #CSS
-EGİTİM_DURUMU = "EducationStatus" #NAME
-UNİVERSİTE = "University" #NAME
-BOLUM= "Department" #NAME
-BASLAMA_YİLİ = ".form-control.react-datepicker-ignore-onclickoutside.tobeto-input" #CSS
-BASLAMA_YİLİ_TAKVİMİ =  ".react-datepicker-year-header.react-datepicker__header" #CSS
-MEZUNİYET_YİLİ =  "//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[5]/div/div/input" #XPATH
-MEZUNİYET_YİLİ_TAKVİMİ = ".react-datepicker-year-header.react-datepicker__header"
-EGİTİMİ_EKLEME = "my-grade" #CLASS
-EGİTİMİ_SİL = ".my-grade:nth-child(1) .grade-delete" #CLASS
-POPUP_UYARİ = " bg-white shadow-lg" #CLASS
-EVET_BUTONU = "btn btn-yes my-3" #CLASS
-
 from selenium.webdriver.common.by import By
 
-# EGITIM_HAYATIM= (By.CSS_SELECTOR,".btn:nth-child(3)") #CSS SELECTOR
 EGITIM_HAYATIM = (By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[1]/div/a[3]/span[2]")
-# KULLANICI_BUTTON = (By.CLASS_NAME,"btn p-0 fw-normal b-r-35 text-end d-flex align-items-center show") #CLASS
-# PROFIL_BILGILERI=  (By.CSS_SELECTOR,"li:nth-of-type(1) > .dropdown-item.profil-dropdown") #CSS
+
+EGITIM_DURUMU_BUTONU=(By.XPATH, "//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[1]/select")
+LISANS_SEC= (By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[1]/select/option[2]")
+
+UNIVERSITE = (By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[2]/input") #NAME
+UNIVERSITE_ADI = "İTÜ"
+
+BOLUM= (By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[3]/input") #NAME
+BOLUM_ADI= "KİMYA"
+BOLUM_ADI_DEVAM ="TEST MÜHENDİSİ"
+
+BASLAMA_YILI_BUTONU = (By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[4]/div")
+BASLAMA_YILI_SEC = (By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[4]/div[2]/div[2]/div/div/div[2]/div[2]/div/div[7]") #XPATH
+
+MEZUNIYET_YILI =  (By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[5]/div/div/input") #XPATH
+MEZUNIYET_YILI_SEC = (By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[5]/div[2]/div[2]/div/div/div[2]/div[2]/div/div[8]") #XPATH
+
+UNIVERSITEYE_DEVAM_EDIYORUM_BUTONU = (By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[5]/label[2]/input")
+
+BASARILI_POPUP_MESAJ = (By.XPATH,"//div[@id='__next']//div[@role='alert']/div[@class='toast-body']")
+BASARILI_POPUP_MESAJI_TEXT ="• Eğitim bilgisi eklendi."
+                     
+KAYDET_BUTONU=(By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/form/button")
+
+KAYDI_SIL=(By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/div/div/div[2]/span")
+KAYIT_SILMEYE_EMINMISIN_MESAJI = (By.XPATH,"//body/div[@role='dialog']/div[@class='modal-dialog modal-dialog-centered']/div[@class='modal-content']//p[@class='alert-message mx-3']")
+KAYIT_SILMEYE_EMINMISIN_MESAJI_TEXT = "Seçilen eğitimi silmek istediğinize emin misiniz?"
+EVET_BUTONU = (By.XPATH,"//body/div[@role='dialog']/div[@class='modal-dialog modal-dialog-centered']/div[@class='modal-content']//button[@class='btn btn-yes my-3']")
+KAYIT_SILME_BASARILI = (By.XPATH,"//div[@id='__next']//div[@role='alert']/div[@class='toast-body']")
+KAYIT_SILME_BASARILI_TEXT = "• Eğitim kaldırıldı."
+
+#UYARI MESAJI
+UYARI_MESAJI= (By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[1]/span")
+UYARI_MESAJI_TEXT = "Doldurulması zorunlu alan*"
+
 PROFIL_BIGLILERI_BUTTON =(By.XPATH, "//*[@id='__next']/div/nav/div[1]/div/div/div[2]/ul/li[1]/a")
 KULLANICI_BUTTON = (By.XPATH, "//*[@id='__next']/div/nav/div[1]/div/div/div[2]/button")
