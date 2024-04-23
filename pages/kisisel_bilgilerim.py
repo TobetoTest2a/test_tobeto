@@ -49,7 +49,11 @@ class kisisel_bilgiler(PageBase):
         return ulke_bolumu
     
     def foto_cek(self):
-        screenshot_path = SCREENSHOT_FOLDER
+        screenshot_path = SCREENSHOT1
+        self.driver.save_screenshot(screenshot_path)
+
+    def foto_cek2(self):
+        screenshot_path = SCREENSHOT2
         self.driver.save_screenshot(screenshot_path)
 
     def bayrak_butonuna_tikla(self):
@@ -94,13 +98,6 @@ class kisisel_bilgiler(PageBase):
         ilce_sec.click()
 
 #####################
-     
-
-    def tc_kimlik_no_gir(self):
-        tc_kimlik = self.wait_element_visibility(TC_KIMLIK_LOCATED)
-        tc_kimlik.send_keys(GECERSIZ_TC_KIMLIK_DATA)
-
-#####################
 
     def dosya_duzenleme_butonuna_tikla(self):
         dosya_duzenleme_butonu = self.wait_element_visibility(PP_DUZENLEME_BUTON_LOCATE)
@@ -114,10 +111,45 @@ class kisisel_bilgiler(PageBase):
         gozat_butonu_mesaj = self.wait_element_visibility(GOZAT_LOCATE)
         return gozat_butonu_mesaj.text
     
-    def resim_yukle(self):
-        gozat_buton = self.wait_element_visibility(GOZAT_BUTON_LOCATE).send_keys(DOSYA1_PATH)
-        submit_buton = self.wait_element_visibility(DOSYA_SUBMIT_LOCATE)
-        submit_buton.click()
-    
+    #def resim_yukle(self):
+    #       file_upload = self.driver.find_element(GOZAT_BUTON_LOCATE).send_keys(DOSYA1_PATH)
 
-        
+    def dosyayi_yukle_butonuna_tikla(self):
+        dosya_yukle_butonu = self.wait_element_visibility(DOSYA_SUBMIT_LOCATE)
+        dosya_yukle_butonu.click()
+
+    def mahalle_text_gir(self):
+        mahalle_text = self.wait_element_visibility(MAHALLE_TEXT_LOCATE)
+        mahalle_text.send_keys(IKIYUZ_KARAKTERLI_TEXT)
+    
+    def hakkimda_text_gir(self):
+        hakkimda_text = self.wait_element_visibility(HAKKIMDA_TEXT_LOCATE)
+        hakkimda_text.send_keys(UCYUZ_KARAKTERLI_TEXT)
+
+
+    def kaydet_butonuna_tikla(self):
+        kaydet_butonu = self.wait_element_visibility(KAYDET_BUTON_LOCATE)
+        kaydet_butonu.click()
+
+    def mahalle_uyari_alani(self):
+        mahalle_uyari = self.wait_element_visibility(MAHALLE_UYARI_TEXT_LOCATE)
+        return mahalle_uyari.text
+
+    def hakkimda_uyari_alani(self):
+        hakkimda_uyari = self.wait_element_visibility(HAKKIMDA_UYARI_TEXT_LOCATE)
+        return hakkimda_uyari.text
+    
+    #####################
+     
+
+    def gecersiz_tc_kimlik_no_gir(self):
+        tc_kimlik = self.wait_element_visibility(TC_KIMLIK_LOCATED)
+        tc_kimlik.send_keys(GECERSIZ_TC_KIMLIK_DATA)
+
+    def oniki_haneli_tc_kimlik_no_gir(self):
+        tc_kimlik = self.wait_element_visibility(TC_KIMLIK_LOCATED)
+        tc_kimlik.send_keys(ONIKI_HANELI_TC_KIMLIK)
+
+    def tc_kimlik_uyari_alani(self):
+        tc_uyari_alan = self.wait_element_visibility(TC_KIMLIK_UYARI_LOCATED)
+        return tc_uyari_alan.text
