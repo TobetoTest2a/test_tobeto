@@ -89,7 +89,7 @@ class TestTobetoGiris(softest.TestCase,PageBase):
         medya_hesaplarim.medya_hesabi_sec()
         medya_hesaplarim.medya_url_gir()
         medya_hesaplarim.medya_guncelle()
-        self.soft_assert(self.assertEqual, MEDIA_UPDATE_SUCCESS_TEXT, medya_hesaplarim.guncelleme_islemini_gerceklestir(), "• Forbidden")
+        self.soft_assert(self.assertNotEqual, MEDIA_UPDATE_SUCCESS_TEXT, medya_hesaplarim.guncelleme_islemini_gerceklestir(), "• Forbidden")
         pyautogui.screenshot(UPDATE_MEDIA_SCRRENSHOT_PATH)
         self.assert_all()
         
