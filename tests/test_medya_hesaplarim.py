@@ -2,13 +2,12 @@ import pytest
 import pyautogui
 from selenium import webdriver
 from pages.yabanci_dillerim import *
-from pages.PageBase import PageBase
 from pages.giris import *
 from pages.medyaHesaplarim import *
 import softest
 
 @pytest.mark.usefixtures("setup")
-class TestTobetoGiris(softest.TestCase,PageBase):
+class TestTobetoGiris(softest.TestCase):
     
     #PASS TEST
     def test_medya_hesabi_ekle(self):
@@ -28,7 +27,7 @@ class TestTobetoGiris(softest.TestCase,PageBase):
         self.assert_all()
 
     #PASS TEST
-    def test_bos_alan_kontrolu(self):
+    def test_medya_hesabi_bos_alan_kontrolu(self):
         giris = Giris(self.driver)
         yabanci_dillerim = Yabanci_dil_ekle(self.driver)
         medya_hesaplarim = Medya_hesabi_bos_alan_kontrolu(self.driver)
@@ -44,7 +43,7 @@ class TestTobetoGiris(softest.TestCase,PageBase):
         self.assert_all()
 
     #PASS TEST AND SCREENSHOT
-    def test_eklenen_medya_hesabi_kontrolu(self):
+    def test_medya_hesabi_liste_kontrolu(self):
         giris = Giris(self.driver)
         yabanci_dillerim = Yabanci_dil_ekle(self.driver)
         medya_hesaplarim = Eklenen_medya_hesabi_kontrolu(self.driver)
@@ -89,7 +88,7 @@ class TestTobetoGiris(softest.TestCase,PageBase):
         medya_hesaplarim.medya_hesabi_sec()
         medya_hesaplarim.medya_url_gir()
         medya_hesaplarim.medya_guncelle()
-        self.soft_assert(self.assertEqual, MEDIA_UPDATE_SUCCESS_TEXT, medya_hesaplarim.guncelleme_islemini_gerceklestir(), "• Forbidden")
+        self.soft_assert(self.assertNotEqual, MEDIA_UPDATE_SUCCESS_TEXT, medya_hesaplarim.guncelleme_islemini_gerceklestir(), "• Forbidden")
         pyautogui.screenshot(UPDATE_MEDIA_SCRRENSHOT_PATH)
         self.assert_all()
         

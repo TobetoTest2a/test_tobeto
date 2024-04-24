@@ -53,7 +53,7 @@ class TestTobetoGiris(softest.TestCase,PageBase):
         yabanci_dillerim.sil_butonuna_tikla()
         yabanci_dillerim.silmeyi_onayla()
         self.soft_assert(self.assertEqual, DELETE_POPUP_MESSAGE, yabanci_dillerim.silme_islemi_basarili(), "HATALI MESAJ")
-        self.assert_all()
+        self.assert_all()       
 
 
         
