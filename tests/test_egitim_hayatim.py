@@ -9,7 +9,7 @@ from pages.yabanci_dillerim import Yabanci_dil_ekle
 @pytest.mark.usefixtures("setup")
 class TestEgitimHayatim(softest.TestCase,PageBase):
 
-    def test_egitim_hayatim_bos_gecme(self): 
+    def test1_egitim_hayatim_bos_gecme(self): 
        
         giris=Giris(self.driver)  
         profile_tikla=Yabanci_dil_ekle(self.driver)
@@ -18,12 +18,12 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         giris.ana_giris()
         profile_tikla.profilim_kismina_tikla()
         profile_tikla.profil_bilgileri_tikla()
-        egitimHayatim.egitim_hayatim_butonuna_tiklar()
+        egitimHayatim.egitim_hayatim_butonuna_tikla()
         egitimHayatim.kaydet_butonuna_tikla()
         egitimHayatim.doldurulmasi_zorunlu_alan_uyari_mesaji()
         egitimHayatim.ekran_foto_cek()
     
-    def test_universite_adini_tek_harf_olarak_yazma_hatasi(self):
+    def test2_universite_adini_tek_harf_olarak_yazma_hatasi(self):
         giris=Giris(self.driver)  
         profile_tikla=Yabanci_dil_ekle(self.driver)
         egitimHayatim= EgitimHayatim(self.driver)
@@ -32,7 +32,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         giris.ana_giris()
         profile_tikla.profilim_kismina_tikla()
         profile_tikla.profil_bilgileri_tikla()
-        egitimHayatim.egitim_hayatim_butonuna_tiklar()
+        egitimHayatim.egitim_hayatim_butonuna_tikla()
         egitimHayatim.egitim_durumuna_tikla()
         egitimHayatim.egitim_durumu_sec()
         egitimHayatim.universite_adina_bir_harf_yaz()
@@ -45,7 +45,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         egitimHayatim.universite_adi_en_az_2_harften_olusmalidir_uyari_mesaji()
         egitimHayatim.ekran_foto_cek()
     
-    def test_bolum_adini_tek_harf_olarak_yazma_hatasi(self):
+    def test3_bolum_adini_tek_harf_olarak_yazma_hatasi(self):
         giris=Giris(self.driver)  
         profile_tikla=Yabanci_dil_ekle(self.driver)
         egitimHayatim= EgitimHayatim(self.driver)
@@ -55,7 +55,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         giris.ana_giris()
         profile_tikla.profilim_kismina_tikla()
         profile_tikla.profil_bilgileri_tikla()
-        egitimHayatim.egitim_hayatim_butonuna_tiklar()
+        egitimHayatim.egitim_hayatim_butonuna_tikla()
         egitimHayatim.egitim_durumuna_tikla()
         egitimHayatim.egitim_durumu_sec()
         egitimHayatim.universite_adi_yaz()
@@ -68,7 +68,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         egitimHayatim.bolum_adi_en_az_2_harften_olusmalidir_uyari_mesaji()
         egitimHayatim.ekran_foto_cek()
 
-    def test_egitim_hayatim_ekle(self):
+    def test4_egitim_hayatim_ekle(self):
 
         giris=Giris(self.driver)  
         profile_tikla=Yabanci_dil_ekle(self.driver)
@@ -78,7 +78,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         giris.ana_giris()
         profile_tikla.profilim_kismina_tikla()
         profile_tikla.profil_bilgileri_tikla()
-        egitimHayatim.egitim_hayatim_butonuna_tiklar()
+        egitimHayatim.egitim_hayatim_butonuna_tikla()
         egitimHayatim.egitim_durumuna_tikla()
         egitimHayatim.egitim_durumu_sec()
         egitimHayatim.universite_adi_yaz()
@@ -89,9 +89,10 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         egitimHayatim.mezuniyet_yili_sec()
         egitimHayatim.kaydet_butonuna_tikla()
         egitimHayatim.universite_kaydi_basarili_popup_mesaji()
+        egitimHayatim.sayfayi_asagi_kaydir()
         egitimHayatim.ekran_foto_cek()
     
-    def test_universiteye_devam_ediyorum_butonuna_tikla(self):
+    def test5_universiteye_devam_ediyorum_butonuna_tikla(self):
 
         giris=Giris(self.driver)  
         profile_tikla=Yabanci_dil_ekle(self.driver)
@@ -102,7 +103,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         giris.ana_giris()
         profile_tikla.profilim_kismina_tikla()
         profile_tikla.profil_bilgileri_tikla()
-        egitimHayatim.egitim_hayatim_butonuna_tiklar()
+        egitimHayatim.egitim_hayatim_butonuna_tikla()
         egitimHayatim.egitim_durumuna_tikla()
         egitimHayatim.egitim_durumu_sec()
         egitimHayatim.universite_adi_yaz()
@@ -115,7 +116,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         egitimHayatim.sayfayi_asagi_kaydir()
         egitimHayatim.ekran_foto_cek()
     
-    def test_kayit_edilen_universite_bilgilerini_silme(self):
+    def test6_kayit_edilen_universite_bilgilerini_silme(self):
         giris=Giris(self.driver)  
         profile_tikla=Yabanci_dil_ekle(self.driver)
         egitimHayatim= EgitimHayatim(self.driver)
@@ -126,7 +127,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         giris.ana_giris()
         profile_tikla.profilim_kismina_tikla()
         profile_tikla.profil_bilgileri_tikla()
-        egitimHayatim.egitim_hayatim_butonuna_tiklar()
+        egitimHayatim.egitim_hayatim_butonuna_tikla()
         egitimHayatim.sayfayi_asagi_kaydir()
         egitimHayatim.universite_kaydini_sil()
         egitimHayatim.egitimi_silmek_istediginize_eminmisiniz_popup_mesaji()
