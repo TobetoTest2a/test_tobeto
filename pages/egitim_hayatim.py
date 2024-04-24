@@ -23,7 +23,7 @@ class EgitimHayatim(PageBase):
     def profil_bilgilerine_tikla(self):
         self.wait_element_visibility(PROFIL_BIGLILERI_BUTTON).click()
        
-    def egitim_hayatim_butonuna_tiklar(self):
+    def egitim_hayatim_butonuna_tikla(self):
         self.wait_element_visibility(EGITIM_HAYATIM).click()
         time.sleep(2)
         
@@ -57,7 +57,7 @@ class Egitim_ekle_universite_adi_hatali_mesaji(PageBase):
     def profil_bilgilerine_tikla(self):
         self.wait_element_visibility(PROFIL_BIGLILERI_BUTTON).click()
        
-    def egitim_hayatim_butonuna_tiklar(self):
+    def egitim_hayatim_butonuna_tikla(self):
         self.wait_element_visibility(EGITIM_HAYATIM).click()
         time.sleep(2)
     
@@ -125,7 +125,7 @@ class Egitim_ekle_bolum_adi_hatali_mesaji(PageBase):
     def profil_bilgilerine_tikla(self):
         self.wait_element_visibility(PROFIL_BIGLILERI_BUTTON).click()
        
-    def egitim_hayatim_butonuna_tiklar(self):
+    def egitim_hayatim_butonuna_tikla(self):
         self.wait_element_visibility(EGITIM_HAYATIM).click()
         time.sleep(2)
     
@@ -189,7 +189,7 @@ class Egitim_hayatim_ekle(PageBase):
     def profil_bilgilerine_tikla(self):
         self.wait_element_visibility(PROFIL_BIGLILERI_BUTTON).click()
        
-    def egitim_hayatim_butonuna_tiklar(self):
+    def egitim_hayatim_butonuna_tikla(self):
         self.wait_element_visibility(EGITIM_HAYATIM).click()
         time.sleep(2)
     
@@ -236,6 +236,10 @@ class Egitim_hayatim_ekle(PageBase):
         assert beklenen_mesaj.text == BASARILI_POPUP_MESAJI_TEXT
         time.sleep(2)
 
+    def sayfayi_asagi_kaydir (self):
+        self.driver.execute_script("scrollBy(0,2000)")
+        time.sleep(5)
+
     def ekran_foto_cek(self):
         ekrangoruntusu_path = FOTO_CEKME_DOSYASI2
         self.driver.save_screenshot(ekrangoruntusu_path)
@@ -253,7 +257,7 @@ class Universiteye_devam_ediyor_butonu(PageBase):
     def profil_bilgilerine_tikla(self):
         self.wait_element_visibility(PROFIL_BIGLILERI_BUTTON).click()
        
-    def egitim_hayatim_butonuna_tiklar(self):
+    def egitim_hayatim_butonuna_tikla(self):
         self.wait_element_visibility(EGITIM_HAYATIM).click()
         time.sleep(2)
     
@@ -317,7 +321,7 @@ class Kayit_Edilen_Universiteyi_Silme(PageBase):
     def profil_bilgilerine_tikla(self):
         self.wait_element_visibility(PROFIL_BIGLILERI_BUTTON).click()
        
-    def egitim_hayatim_butonuna_tiklar(self):
+    def egitim_hayatim_butonuna_tikla(self):
         self.wait_element_visibility(EGITIM_HAYATIM).click()
         time.sleep(2)
     
