@@ -21,7 +21,7 @@ class KayitOlFonksiyonu(PageBase):
         self.wait_element_visibility(EPOSTA).send_keys(kullanici_eposta)
         self.wait_element_visibility(SIFRE).send_keys(valid_password)
         self.driver.execute_script("scrollBy(0,500)")
-        time.sleep(2)
+        time.sleep(10)
         self.wait_element_visibility(SIFRETEKRAR).send_keys(valid_password)
         self.wait_element_visibility(KAYITOL).click()
         
@@ -33,8 +33,7 @@ class KayitOlFonksiyonu(PageBase):
         arama_izni.click()
         telno_yaz =self.wait_element_visibility(TELNO)
         telno_yaz.send_keys(telno)
-        time.sleep(15)
-        #self.wait_element_visibility(ROBOTDEGILIM).click()
+        time.sleep(25)
         self.wait_element_visibility(DEVAMETBUTTON).click()
         
     def kaydetme_basarili(self):
@@ -60,7 +59,6 @@ class KayitOlFonksiyonu(PageBase):
         self.wait_element_visibility(SIFRETEKRAR).send_keys(valid_password)
         self.wait_element_visibility(SIFRETEKRAR).clear()
         time.sleep(5)
-        #self.wait_element_visibility(KAYITOL).click()
         
     def zorunlu_alan_karsilastirma(self):   
         zorunlu_alan = self.wait_element_visibility(ZORUNLU1) 
@@ -81,7 +79,7 @@ class KayitOlFonksiyonu(PageBase):
         self.wait_element_visibility(SIFRETEKRAR).send_keys(valid_password)
         self.wait_element_visibility(EPOSTA).send_keys("123")
         self.wait_element_visibility(KAYITOL).click()
-        time.sleep(10)
+        time.sleep(30) #CAPTCHA alanlarini gecebilmek icin verildi.
     
     def bos_eposta_uyari_mesaji_kontrolu(self): 
         uyari_masaji = self.wait_element_visibility(EPOSTABOS_UYARIMESAJI)
@@ -94,7 +92,7 @@ class KayitOlFonksiyonu(PageBase):
         self.wait_element_visibility(EPOSTA).send_keys(kullanici_eposta)
         self.wait_element_visibility(SIFRE).send_keys(valid_password)
         self.driver.execute_script("scrollBy(0,500)")
-        time.sleep(2)
+        time.sleep(20) #CAPTCHA alanlarini gecebilmek icin verildi.
         self.wait_element_visibility(SIFRETEKRAR).send_keys("1")
         self.wait_element_visibility(KAYITOL).click()
         
@@ -110,7 +108,7 @@ class KayitOlFonksiyonu(PageBase):
         self.wait_element_visibility(EPOSTA).send_keys("tobeto.0001@gmail.com")
         self.wait_element_visibility(SIFRE).send_keys(valid_password)
         self.driver.execute_script("scrollBy(0,500)")
-        time.sleep(2)
+        time.sleep(20) #CAPTCHA alanlarini gecebilmek icin verildi.
         self.wait_element_visibility(SIFRETEKRAR).send_keys(valid_password)
         self.wait_element_visibility(KAYITOL).click()
         
@@ -127,7 +125,7 @@ class KayitOlFonksiyonu(PageBase):
         arama_izni.click()
         telno_yaz =self.wait_element_visibility(TELNO)
         telno_yaz.send_keys("123456878901234")
-        time.sleep(20) #CAPTCHA alanlarini gecebilmek icin verildi.
+        time.sleep(30) #CAPTCHA alanlarini gecebilmek icin verildi.
         self.wait_element_visibility(DEVAMETBUTTON).click()
      
     def uzun_telNo_uyarisi_kontrolu(self):
@@ -142,7 +140,7 @@ class KayitOlFonksiyonu(PageBase):
         arama_izni.click()
         telno_yaz =self.wait_element_visibility(TELNO)
         telno_yaz.send_keys("1")
-        time.sleep(10)  #CAPTCHA alanlarini gecebilmek icin verildi.
+        time.sleep(30)  #CAPTCHA alanlarini gecebilmek icin verildi.
         self.wait_element_visibility(DEVAMETBUTTON).click()
         
     def kisa_telNo_uyarisi_kontrolu(self):
@@ -157,7 +155,7 @@ class KayitOlFonksiyonu(PageBase):
         arama_izni.click()
         telno_yaz =self.wait_element_visibility(TELNO)
         telno_yaz.send_keys("5050000000")
-        time.sleep(10)  #CAPTCHA alanlarini gecebilmek icin verildi.
+        time.sleep(30)  #CAPTCHA alanlarini gecebilmek icin verildi.
         self.wait_element_visibility(DEVAMETBUTTON).click()
         
     def mevcut_telNo_uyarisi_kontrolu(self):
