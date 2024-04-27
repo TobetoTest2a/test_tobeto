@@ -65,5 +65,4 @@ def browser(request):
 @pytest.fixture(scope="session", autouse=True)
 def environment(request):
     return request.config.getoption("--env")
-  
     

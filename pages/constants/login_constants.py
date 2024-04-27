@@ -18,3 +18,5 @@ GECERSIZ_POPUP_TEXT = "• Geçersiz e-posta veya şifre."
 BOS_ERROR_LINE_MAIL_TEXT = "Doldurulması zorunlu alan*"
 BOS_ERROR_LINE_PASSWORD_TEXT = "Doldurulması zorunlu alan*"
 EXCEL_FOLDER = r"testdata\giris.xlsx"
+
+
