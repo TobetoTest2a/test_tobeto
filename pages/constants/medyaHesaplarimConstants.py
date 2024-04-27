@@ -29,8 +29,8 @@ MEDIA_UPDATE_SUCCESS_TEXT = "Başarıyla güncellendi."
 
 MEDIA_INFO_MESSAGE_CSS = (By.CSS_SELECTOR, ".col-12.col-lg-9 > span")
 MEDIA_INFO_MESSAGE_TEXT = "En fazla 3 adet medya seçimi yapılabilir."
-ADD_MEDIA_SCRRENSHOT_PATH = r'C:\Users\win10\Desktop\test_tobeto\test_tobeto\tests\screenshot_SocialMedia\social-media-added-list.png'
-UPDATE_MEDIA_SCRRENSHOT_PATH = r'C:\Users\win10\Desktop\test_tobeto\test_tobeto\tests\screenshot_SocialMedia\social-media-update.png'
+ADD_MEDIA_SCRRENSHOT_PATH = r'tests\screenshot_SocialMedia\social-media-added-list.png'
+UPDATE_MEDIA_SCRRENSHOT_PATH = r'tests\screenshot_SocialMedia\social-media-update.png'
 
 
 
