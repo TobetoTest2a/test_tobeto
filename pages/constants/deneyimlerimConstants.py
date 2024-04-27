@@ -18,14 +18,17 @@ IS_BASLANGIC_GUN="//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div
 IS_ACIKLAMASI="//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[7]/textarea"
 CALISMAYA_DEVAM_EDIYORUM_BUTONU="//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[6]/label[2]/input"
 
+KAYDEDILEN_DENEYIM_BASLIKLARI=(By.CLASS_NAME,"grade-details-header")
+TUM_DENEYIMLER=(By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/div/div/div/div/span[2]") # elementsss 
+
 UYARI_MESAJI="//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[1]/span" #XPATH
 KAYDET_BUTONU="//*[@id='__next']/div/main/section/div/div/div[2]/form/button" #XPATH
 DENEYIM_EKLENDI_MESAJI="toast-body"
 
 SIL_BUTONU="//*[@id='__next']/div/main/section/div/div/div[2]/div/div[1]/div[2]/div[5]/span[1]"
-DENEYIM_SIL_EVET_BUTONU="/html/body/div[3]/div/div/div/div/div/div[2]/button[2]"
+DENEYIM_SIL_EVET_BUTONU="/html/body/div[4]/div/div/div/div/div/div[2]/button[2]" 
 DENEYIM_SIL_HAYIR_BUTONU="/html/body/div[3]/div/div/div/div/div/div[2]/button[1]"
-
+DENEYIM_KALDIRILDI_MESAJI="//*[@id='__next']/div/div[2]/div/div[2]"
 # EKLENEN DENEYIMIN WEBELEMENTLERI
 
 EKLENEN_KURUM_ADI="//*[@id='__next']/div/main/section/div/div/div[2]/div/div/div[2]/div[1]/span[2]"
@@ -35,6 +38,12 @@ EKLENEN_SEHIR="//*[@id='__next']/div/main/section/div/div/div[2]/div/div[1]/div[
 UC_NOKTA="//*[@id='__next']/div/main/section/div/div/div[2]/div/div[1]/div[2]/div[5]/span[2]"
 EKLENEN_IS_ACIKLAMASI="/html/body/div[4]/div/div/div[2]/span"
 EKLENEN_TARIH_ARALIGI="//*[@id='__next']/div/main/section/div/div/div[2]/div/div[1]/div[1]/span"
+
+#Hata Mesaj
+HATA_MESAJI=(By.CLASS_NAME,"text-danger")  # doldurulmasi zorunlu alan uyarisi
+KURUM_ADI_DATA_MESAJI=(By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[1]/span") # kurum adi 5 karakterden az olamaz hata mesajı
+
+
 #Test Data
 
 DATA_KURUM_ADI="ENOCTA"
@@ -49,3 +58,4 @@ DATA_IS_BASLANGIC_AY="Ocak"
 DATA_IS_BITIS_YIL="2023"
 DATA_IS_BITIS_AY="Nisan"
 EXPECTED_TARIH_ARALIGI="01.01.2020 - 27.03.2023"
+DATA_GECERSIZ_KURUM_ADI="dene"
