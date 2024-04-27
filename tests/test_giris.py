@@ -16,7 +16,7 @@ class TestTobetoGiris(softest.TestCase, unittest.TestCase):
     def class_setup(self):
         self.giris_sayfasi = Giris(self.driver)
 
-
+    
     def test_valid_login(self):
         self.giris_sayfasi.username_bul_ve_gönder(GIRISMAIL)
         self.giris_sayfasi.password_bul_ve_gönder(GIRISSIFRE)
@@ -25,6 +25,7 @@ class TestTobetoGiris(softest.TestCase, unittest.TestCase):
         self.soft_assert(self.assertEqual, BASARILI_POPUP_TEXT , actual_value, "HATA!!!")
         self.assert_all
 
+    
     def test_invalid_login(self):
         self.giris_sayfasi.username_bul_ve_gönder(GECERSIZMAIL)
         self.giris_sayfasi.password_bul_ve_gönder(GECERSIZSIFRE)
@@ -33,6 +34,7 @@ class TestTobetoGiris(softest.TestCase, unittest.TestCase):
         self.soft_assert(self.assertEqual, GECERSIZ_POPUP_TEXT , actual_value, "HATA!!!")
         self.assert_all
 
+  
     def test_empty_login(self):
         self.giris_sayfasi.username_bul_ve_gönder("")
         self.giris_sayfasi.password_bul_ve_gönder("")
