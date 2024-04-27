@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions
 from pages.PageBase import PageBase
 from pages.constants.deneyimlerimConstants import *
 from selenium.webdriver.support.select import Select
+from selenium.common.exceptions import *
 import datetime 
 from pages.giris import Giris
 
@@ -31,7 +32,14 @@ class Deneyimlerim(PageBase):
 
     def kurum_adi_textbox_deger_girer(self):
         kurum_adi_textbox=self.driver.find_element(By.XPATH,KURUM_ADI_TEXTBOX)
-        kurum_adi_textbox.send_keys(DATA_KURUM_ADI)
+        kurum_adi_textbox.send_keys(DATA_KURUM_ADI)    
+                  
+    def kurum_adi_textbox_gecersiz_deger_girer(self):
+        try:
+            kurum_adi_textbox=self.driver.find_element(By.XPATH,KURUM_ADI_TEXTBOX)
+            kurum_adi_textbox.send_keys(DATA_GECERSIZ_KURUM_ADI)
+        except NoSuchElementException:
+            print("Kurum adi textbox locate hatalii!!! ")
 
     def pozisyon_textbox_deger_girer(self):
         pozisyon_adi_textbox=self.driver.find_element(By.XPATH,POZISYON_TEXTBOX)
@@ -138,9 +146,31 @@ class Deneyimlerim(PageBase):
         self.driver.find_element(By.XPATH,DENEYIM_SIL_HAYIR_BUTONU).click()
 
     def deneyim_silindi_mesajini_dondurur(self):
-        mesaj=self.driver.find_element(By.XPATH,DENEYIM_EKLENDI_MESAJI)
+        mesaj=self.driver.find_element(By.XPATH,DENEYIM_KALDIRILDI_MESAJI)
         return mesaj.text
-        
+    
+    def kurum_adi_hata_mesaji_dondurur(self):
+        mesaj=self.wait_element_visibility(KURUM_ADI_DATA_MESAJI)
+        return mesaj.text
+
+    def deneyimlerde_kayitli_kurum_isimlerini_dondurur(self):
+        try:
+            kayitli_deneyimler=self.driver.find_elements(TUM_DENEYIMLER)
+            for deneyim in kayitli_deneyimler:
+                print (deneyim.text)
+            
+        except InvalidArgumentException:
+            print(" birseyler hataliii ama ne?")
+
+    def kayitli_deneyim_basliklarini_yazdirir(self):
+        try:
+            deneyimler_basliklari=self.driver.find_elements(KAYDEDILEN_DENEYIM_BASLIKLARI)
+            for baslik in deneyimler_basliklari:
+                print (baslik.text)
+
+        except InvalidArgumentException:
+            print(" birseyler hataliii ama ne?")
+
 
     
     
