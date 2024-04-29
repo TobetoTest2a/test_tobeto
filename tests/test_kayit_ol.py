@@ -16,7 +16,7 @@ class TestKayitOl(softest.TestCase,PageBase):
         kayit_ol_object.sozlesmeler_sayfasini_doldurur()
         kayit_ol_object.kaydetme_basarili()
         self.soft_assert(self.assertEqual, GORUNECEKTEXT , kayit_ol_object.kaydetme_basarili(), "MESAJ GORUNTULENEMEDİ.")
-        #self.assert_all()
+        self.assert_all()
         
     def test_bilgiler_bos_gecildiginde_uyari_meajlari_goruntulenmesi_FAIL(self): # != SEKLİNDE YAZILDI
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
