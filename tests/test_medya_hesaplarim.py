@@ -53,9 +53,8 @@ class TestTobetoGiris(softest.TestCase):
         yabanci_dillerim.profil_bilgileri_tikla()
         medya_hesaplarim.medya_hesaplarima_tikla()
         self.soft_assert(self.assertEqual, MEDIA_INFO_MESSAGE_TEXT, medya_hesaplarim.bilgi_mesaji_goruntule(), "HATALI MESAJ")
-        self.assert_all()
         pyautogui.screenshot(ADD_MEDIA_SCRRENSHOT_PATH)
-        
+        self.assert_all()
 
     #PASS TEST 
     def test_medya_hesabi_silme_islemi(self):
