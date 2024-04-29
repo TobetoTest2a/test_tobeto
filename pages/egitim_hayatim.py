@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 
-from pages.constants.kisisel_bilgilerim_constants import SCREENSHOT_FOLDER
+
 
 @pytest.mark.usefixtures("setup")
 class EgitimHayatim(PageBase):
