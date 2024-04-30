@@ -6,7 +6,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 
-
 @pytest.mark.usefixtures("setup")
 class EgitimHayatim(PageBase):
     def __init__(self,driver):
