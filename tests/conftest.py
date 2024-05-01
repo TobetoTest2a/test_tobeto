@@ -38,7 +38,7 @@ def setup(request, browser, environment):
             base_url = "https://dev-tobeto.com"
         elif environment == "qa":
             base_url = "https://qa-tobeto.com"
-        elif environment == "test":
+        elif environment == "pre-prod":
             base_url = "https://preprod-tobeto.com"
         elif environment == "prod":
             base_url = BASE_URL
