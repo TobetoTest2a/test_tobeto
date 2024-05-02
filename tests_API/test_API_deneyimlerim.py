@@ -1,45 +1,44 @@
+import pytest
 import requests
 import json
+import softest
+from tests_API.API_constants import *
 
-class TestAPIDeneyimlerim():
+
+class TestAPIDeneyimlerim(softest.TestCase): 
+        
     
-    def test_GET_kayitli_deneyimleri_getir():
+    def test_GET_kayitli_deneyimleri_getir(self):
+        
+        end_point= base_url+ "/experience/my"
 
-        url="https://api.tobeto.com/api/experience/my"
-        token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjkwNzcsImlhdCI6MTcxNDQ2MzQwNSwiZXhwIjoxNzE0NjM2MjA1fQ.2Dywvgm65jcJSiRPSc_EbmGKEzEaDwQsGOZjwV-Qrik"
-       
         headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {token}'
         }
 
-        response = requests.get(url, headers=headers)
-        #print(response.text)
+        response = requests.get(end_point, headers=headers)
+        
+        response_data = response.json() # JSON yanıtını işle
+       
+        # İlk öğeyi seç
+        user_data = response_data[0] 
+        
         
         if response.status_code == 200:
             print(" !! Basarili !! ")
-
-        elif response.status_code == 401:
-            print( "!! UnauthorizedError !!")
-            print("Lütfen token güncelleyiniz!!")
-        
-        elif response.status_code == 404:
-            print("!! NotFoundError !! ")
-            print("Lütfen url kontrol ediniz!!")
-
+            #self.soft_assert(self.assertEqual,expected_corporationName,user_data['corporationName'],"corporationName hatali!!")
+            
+            assert (expected_corporationName == user_data['corporationName'] and expected_position== user_data['position'] and
+                   expected_country == user_data['country'] and expected_sector == user_data['sector'] and 
+                   expected_EndDate == user_data['EndDate'] and expected_StartDate == user_data['StartDate'])    
         else:
             print("Lütfen girdiginiz degerleri kontrol edin!")
 
 
+    def test_POST_yeni_deneyim_ekler(self):
 
-
-
-
-
-
-    def test_POST_yeni_deneyim_ekler():
-
-        url="https://api.tobeto.com/api/experiences"
+        end_point=base_url+"/experiences"
         token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjkwNzcsImlhdCI6MTcxNDQ2MzQwNSwiZXhwIjoxNzE0NjM2MjA1fQ.2Dywvgm65jcJSiRPSc_EbmGKEzEaDwQsGOZjwV-Qrik"
        
         headers = {
@@ -48,33 +47,21 @@ class TestAPIDeneyimlerim():
         }
 
         #test data
-        payload={"id": 371111111111111,"corporationName": "ornek_api_kurum","position": "ornek_pozisyon","sector": "ornek_sektor","country": "Antalya",
-                "StartDate": "2024-04-01","EndDate": "2024-04-26","createdAt": "2024-04-30T07:51:03.133Z","updatedAt": "2024-04-30T07:51:03.133Z",
-                "description": "ornek is aciklamasi","sitemap_exclude": False }
+        payload={"data":{"corporationName":"otomasyondanGelen","position":"selenium","sector":"bilgi teknolojileri",
+                  "country":"Balıkesir","StartDate":"2024-04-01T00:00:00+03:00",
+                  "EndDate":"2024-04-06T00:00:00+03:00","description":"otomasyon yap"}}
 
         # JSON verisini stringe dönüştür
         payload_str = json.dumps(payload) # Gönderilecek JSON verisi str olmalı cunku Post metodu dtring aliyor
         
         # POST isteği yap
-        response = requests.post(url, data = payload_str, headers=headers) #benim gonderdigim header json
-
+        response = requests.post(end_point, data = payload_str, headers=headers) #benim gonderdigim header json
+        print(response.text)
         
         if response.status_code == 200:
             print(" !! Basarili !! ")
-
-        elif response.status_code == 401:
-            print( "!! UnauthorizedError !!")
-            print("Lütfen token güncelleyiniz!!")
-        
-        elif response.status_code == 404:
-            print("!! NotFoundError !! ")
-            print("Lütfen url kontrol ediniz!!")
 
         else:
             print("Lütfen girdiginiz degerleri kontrol edin!")
 
 
-print("****************************************")
-TestAPIDeneyimlerim.test_POST_yeni_deneyim_ekler()
-print("****************************************")
-TestAPIDeneyimlerim.test_GET_kayitli_deneyimleri_getir()
