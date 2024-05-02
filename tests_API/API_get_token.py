@@ -53,11 +53,13 @@ class APIAutoToken():
         else:
             print(f"Giriş hatası kodu: {response.status_code}")
 
-# Çağrı denemesi
-jwt_token = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
-if jwt_token:
-    print("JWT token:", jwt_token)
 
-jwt_token = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_2, TOKEN_FİLE_PATH_2)
-if jwt_token:
-    print("JWT token:", jwt_token)
+# # Çağrı denemesi
+# jwt_token = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
+# if jwt_token:
+#     print("JWT token:", jwt_token)
+
+# jwt_token = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_2, TOKEN_FİLE_PATH_2)
+# if jwt_token:
+#     print("JWT token:", jwt_token)
+

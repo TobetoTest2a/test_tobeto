@@ -22,7 +22,7 @@ class TestKayitOl(softest.TestCase,PageBase):
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.bos_kayit()  
         beklenen_zorunlu_alan_sayisi = int(5)
-        self.soft_assert(self.assertTrue, beklenen_zorunlu_alan_sayisi != kayit_ol_object.zorunlu_alan_karsilastirma(), "BEKLENILEN POPUP GORUNTULENMEDI.")
+        self.soft_assert(self.assertTrue, beklenen_zorunlu_alan_sayisi == kayit_ol_object.zorunlu_alan_karsilastirma(), "BEKLENILEN POPUP GORUNTULENMEDI.")
         self.assert_all()
         
     def test_gecersiz_eposta_mesaji_goruntulenmesi(self):
@@ -36,14 +36,14 @@ class TestKayitOl(softest.TestCase,PageBase):
     def test_sifre_eslesmedi_popup_goruntulenmesi_FAIL(self):  
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.sifre_tekrari_yalnis_doldurulur()
-        self.soft_assert(self.assertNotEqual, kayit_ol_object.sifre_eslesmedi_popup_kontrolu(), YALNIS_SIFRE_POPUP_XPATH_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {YALNIS_SIFRE_POPUP_XPATH_TEXT}")
+        self.soft_assert(self.assertEqual, kayit_ol_object.sifre_eslesmedi_popup_kontrolu(), YALNIS_SIFRE_POPUP_XPATH_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {YALNIS_SIFRE_POPUP_XPATH_TEXT}")
         self.assert_all()
         
     def test_mevcut_eposta_popup_goruntulenmesi_FAIL(self):
          kayit_ol_object = KayitOlFonksiyonu(self.driver)
          kayit_ol_object.mevcut_eposta_ile_kayit()
          kayit_ol_object.mevcut_eposta_popup_kontrolu()
-         self.soft_assert(self.assertNotEqual, kayit_ol_object.mevcut_eposta_popup_kontrolu(), MEVCUTSIFRE_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {MEVCUTSIFRE_TEXT}")
+         self.soft_assert(self.assertEqual, kayit_ol_object.mevcut_eposta_popup_kontrolu(), MEVCUTSIFRE_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {MEVCUTSIFRE_TEXT}")
          self.assert_all()
          
     def test_uzun_telefonNum_karakter_sayisi_uyarisi_kontrolu(self):
@@ -68,7 +68,7 @@ class TestKayitOl(softest.TestCase,PageBase):
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.kayitOl_biliglerini_doldurur()
         kayit_ol_object.mevcut_telNo_ile_sozlesmeler_sayfasi_doldurulur()
-        self.soft_assert(self.assertNotEqual, kayit_ol_object.mevcut_telNo_uyarisi_kontrolu(), MEVCUT_TELNO_UYARISI_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {MEVCUT_TELNO_UYARISI_TEXT}")
+        self.soft_assert(self.assertEqual, kayit_ol_object.mevcut_telNo_uyarisi_kontrolu(), MEVCUT_TELNO_UYARISI_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {MEVCUT_TELNO_UYARISI_TEXT}")
         self.assert_all()
          
         
