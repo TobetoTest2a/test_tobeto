@@ -22,7 +22,6 @@ token_language = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjkwNzcsImlhdCI6M
 
 base_url="https://api.tobeto.com/api"
 
-token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjkwNzcsImlhdCI6MTcxNDU2Njg0NSwiZXhwIjoxNzE0NzM5NjQ1fQ.Bt2Gsma8emgG0S_K4H4_eCeF9UpZPm5oZiRzVWuYppU"
 
 #Deneyimlerim
 expected_corporationName= "deneme"

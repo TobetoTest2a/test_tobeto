@@ -2,21 +2,23 @@ import pytest
 import requests
 import json
 import softest
-from tests_API.API_constants import *
+from API_get_token import *
+from API_constants import *
 
 
 class TestAPIDeneyimlerim(softest.TestCase): 
         
     
     def test_GET_kayitli_deneyimleri_getir(self):
-        base_url="https://api.tobeto.com/api"
+       
         end_point= base_url+ "/experience/my"
-
+        token= APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
         headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {token}'
         }
 
+    
         response = requests.get(end_point, headers=headers)
         
         response_data = response.json() # JSON yanıtını işle
@@ -43,9 +45,9 @@ class TestAPIDeneyimlerim(softest.TestCase):
 
 
     def test_POST_yeni_deneyim_ekler(self):
-        base_url="https://api.tobeto.com/api"
+       
         end_point=base_url+"/experiences"
-        
+        token= APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
        
         headers = {
         'Content-Type': 'application/json',
@@ -72,9 +74,9 @@ class TestAPIDeneyimlerim(softest.TestCase):
 
 
     def test_DELETE_yeni_deneyim_siler(self):
-        base_url="https://api.tobeto.com/api"
-        end_point=base_url+"/experiences/3732"
         
+        end_point=base_url+"/experiences/3732"
+        token= APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
 
         headers = {
         'Content-Type': 'application/json',
