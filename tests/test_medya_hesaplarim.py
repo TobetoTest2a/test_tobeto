@@ -7,7 +7,7 @@ from pages.medyaHesaplarim import *
 import softest
 
 @pytest.mark.usefixtures("setup")
-class TestTobetoGiris(softest.TestCase):
+class TestTobetoMedyaHesaplarim(softest.TestCase):
     
     #PASS TEST
     def test_medya_hesabi_ekle(self):
@@ -87,7 +87,7 @@ class TestTobetoGiris(softest.TestCase):
         medya_hesaplarim.medya_hesabi_sec()
         medya_hesaplarim.medya_url_gir()
         medya_hesaplarim.medya_guncelle()
-        self.soft_assert(self.assertNotEqual, MEDIA_UPDATE_SUCCESS_TEXT, medya_hesaplarim.guncelleme_islemini_gerceklestir(), "• Forbidden")
+        self.soft_assert(self.assertEqual, MEDIA_UPDATE_SUCCESS_TEXT, medya_hesaplarim.guncelleme_islemini_gerceklestir(), "• Forbidden")
         pyautogui.screenshot(UPDATE_MEDIA_SCRRENSHOT_PATH)
         self.assert_all()
         
