@@ -3,6 +3,7 @@ import requests
 import json
 import softest
 from tests_API.API_constants import *
+import API_get_token
 
 
 class TestAPI_kisisel_bilgilerim(softest.TestCase):
