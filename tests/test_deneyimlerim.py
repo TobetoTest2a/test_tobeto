@@ -24,8 +24,8 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         time.sleep(3)
         deneyimlerim.profil_bilgilerim_butonuna_tiklar()     
         time.sleep(3)
-        deneyimlerim.deneyimlerim_butonuna_tiklar()
-        
+        deneyimlerim.deneyimlerim_butonuna_tiklar()      
+        time.sleep(3)
 
     # Deneyimlerim sayfasine ulastigini dogrular.
     
@@ -140,7 +140,7 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         time.sleep(3)
         deneyimlerim.kaydet_butonuna_tiklar()
         time.sleep(3)
-        beklenen_zorunlu_alan_sayisi = int(5)
+        beklenen_zorunlu_alan_sayisi = int(6)
         self.soft_assert(self.assertTrue, beklenen_zorunlu_alan_sayisi != deneyimlerim.zorunlu_alan_hata_kontrolu(), "BEKLENILEN POPUP GORUNTULENMEDI.")
         self.assert_all()
 

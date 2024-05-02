@@ -16,7 +16,7 @@ class TestTobetoGiris(softest.TestCase, unittest.TestCase):
     # def class_setup(self):
     #     self.giris_sayfasi = Giris(self.driver)
 
-    
+    @pytest.mark.smoke 
     def test_valid_login(self):
         self.giris_sayfasi = Giris(self.driver)
         self.giris_sayfasi.username_bul_ve_gönder(GIRISMAIL)
@@ -26,7 +26,7 @@ class TestTobetoGiris(softest.TestCase, unittest.TestCase):
         self.soft_assert(self.assertEqual, BASARILI_POPUP_TEXT , actual_value, "HATA!!!")
         self.assert_all
 
-    
+    @pytest.mark.smoke 
     def test_invalid_login(self):
         self.giris_sayfasi = Giris(self.driver)
         self.giris_sayfasi.username_bul_ve_gönder(GECERSIZMAIL)
@@ -36,7 +36,7 @@ class TestTobetoGiris(softest.TestCase, unittest.TestCase):
         self.soft_assert(self.assertEqual, GECERSIZ_POPUP_TEXT , actual_value, "HATA!!!")
         self.assert_all
 
-  
+    @pytest.mark.smoke 
     def test_empty_login(self):
         self.giris_sayfasi = Giris(self.driver)
         self.giris_sayfasi.username_bul_ve_gönder("")
@@ -46,7 +46,7 @@ class TestTobetoGiris(softest.TestCase, unittest.TestCase):
         expected_value = (BOS_ERROR_LINE_MAIL_TEXT, BOS_ERROR_LINE_PASSWORD_TEXT) # Return ettiğimiz değerler tuple olduğu için karşılaştırmak istediğimiz değerleri de tuple olarak yazıp bir değişkene atadık
         self.assertTupleEqual(actual_value, expected_value) # Unittest bulunan assertTupleEqual ile tuple değerleri atadığımız değişkenleri assert ettik
 
-
+    @pytest.mark.smoke 
     def test_nonactive_login(self):
         self.giris_sayfasi = Giris(self.driver)
         self.giris_sayfasi.username_bul_ve_gönder(AKTIFOLMAYANMAIL)
