@@ -1,9 +1,11 @@
 import requests
 import json
 import softest
+from API_constants import *
+from API_get_token import APIAutoToken
 
 class TestAPI(softest.TestCase):
-    def test_valid_login(self):
+    def test_valid_login():
         expected_email = "tobeto.0002@gmail.com"
         # Gerçek API endpoint URL'si
         url = "https://api.tobeto.com/api/auth/local"
@@ -28,7 +30,7 @@ class TestAPI(softest.TestCase):
         else:
          print("Authentication API isteği başarisiz oldu:", response.status_code)
          
-    def test_invalid_login(self): 
+    def test_invalid_login(): 
         expected_username = "tobeto.0002@gmail.com"
         
         url = "https://api.tobeto.com/api/auth/local"
@@ -53,13 +55,13 @@ class TestAPI(softest.TestCase):
         else:
          print("Invalid username API isteği sonucu başarisiz dondu:", response.status_code)
     
-    def test_user_info_isValid(self):
+    def test_user_info_isValid():
         expected_username = "Test"
         expected_surname = "Tobeto"
         expected_phoneNumber = "+905050000000"
     
         url = "https://api.tobeto.com/api/user-profile/my"
-        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mjk0NTEsImlhdCI6MTcxNDMzNDExOCwiZXhwIjoxNzE0NTA2OTE4fQ.jXCfsiBqMXqBBnkbuReZNRlNXOehjYP7tOJIa5gHT1c"
+        token = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_2, TOKEN_FİLE_PATH_2)
     
     
         headers = {
@@ -102,8 +104,8 @@ class TestAPI(softest.TestCase):
             
    
 
-#TestAPI.test_valid_login()
+TestAPI.test_valid_login()
 
-#TestAPI.test_invalid_login()
+TestAPI.test_invalid_login()
 
-#TestAPI.test_user_info_isValid()
+TestAPI.test_user_info_isValid()
