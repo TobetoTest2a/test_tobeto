@@ -3,7 +3,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from pages.PageBase import PageBase
-from pages.constants.login_constants import *
+from pages.constants.giris_constants import *
 
 
 @pytest.mark.usefixtures("setup")
