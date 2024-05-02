@@ -1,5 +1,7 @@
 import requests
 import json
+from API_get_token import *
+from API_constants import *
 
 class TestAPI():
     def valid_login():
@@ -59,8 +61,7 @@ class TestAPI():
         expected_phoneNumber = "+905050000000"
     
         url = "https://api.tobeto.com/api/user-profile/my"
-        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mjk0NTEsImlhdCI6MTcxNDMzNDExOCwiZXhwIjoxNzE0NTA2OTE4fQ.jXCfsiBqMXqBBnkbuReZNRlNXOehjYP7tOJIa5gHT1c"
-    
+        token = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_2, TOKEN_FİLE_PATH_2)
     
         headers = {
         'Content-Type': 'application/json',
