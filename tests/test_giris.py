@@ -2,7 +2,6 @@ from time import sleep
 from ddt import ddt, data, unpack
 from selenium import webdriver
 from pages.giris import *
-from pages.PageBase import PageBase
 from utilities.excel_okuyucu import ExcelOkuyucu
 import softest
 import unittest
