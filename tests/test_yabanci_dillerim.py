@@ -6,7 +6,7 @@ from pages.giris import *
 import softest
 
 @pytest.mark.usefixtures("setup")
-class TestTobetoGiris(softest.TestCase,PageBase):
+class TestTobetoYabanciDillerim(softest.TestCase,PageBase):
     
     def test_yabanci_dil_ekle(self):
         giris = Giris(self.driver)
