@@ -5,12 +5,14 @@ from pages.kisisel_bilgilerim import *
 from pages.deneyimlerim import *
 import softest
 import pytest
+import allure
 
 
 
 @pytest.mark.usefixtures("setup")
 class TobetoAyarlar(softest.TestCase):
 
+    @allure.title("Boş bilgilerle şifre değiştirme kontrolü")
     def test_empty_password_change(self):
         ayarlar = Ayarlar(self.driver)
         ayarlar.ana_giris()
@@ -25,13 +27,14 @@ class TobetoAyarlar(softest.TestCase):
         self.soft_assert(self.assertEqual, ERROR_LINE_TEXT , actual_value, "HATA!!!")
         self.assert_all
 
+    @allure.title("En 6 karakter şifre kontrolü")
     def test_5_karakter_password_change(self):
         ayarlar = Ayarlar(self.driver)
         ayarlar.ana_giris()
         ayarlar.sayfayi_asagi_indir()
         ayarlar.profil_olustur_bul_tikla()
         ayarlar.ayarlar_butonuna_tikla()
-        ayarlar.eski_sifre_bul_ve_gönder(MEVCUT_SIFRE_2)
+        ayarlar.eski_sifre_bul_ve_gönder(MEVCUT_SIFRE)
         ayarlar.yeni_sifre_bul_ve_gönder(SIFRE_5_KARAKTER)
         ayarlar.yeni_sifre_tekrar_bul_ve_gönder(SIFRE_5_KARAKTER)
         ayarlar.sifremi_degistir_butonunu_bul_tikla()
@@ -39,6 +42,7 @@ class TobetoAyarlar(softest.TestCase):
         self.soft_assert(self.assertEqual, EN_AZ_6_TEXT , actual_value, "HATA!!!")
         self.assert_all
 
+    @allure.title("Eşleşmeyen şifre kontrolü")
     def test_eslesmeyen_password_change(self):
         ayarlar = Ayarlar(self.driver)
         ayarlar.ana_giris()
@@ -53,6 +57,7 @@ class TobetoAyarlar(softest.TestCase):
         self.soft_assert(self.assertEqual, SIFRE_ESLESMEDI_TEXT , actual_value, "HATA!!!")
         self.assert_all
 
+    @allure.title("Aynı şifre ile şifre değiştirme kontrolü")
     def test_mevcut_yeni_password_change(self):
         ayarlar = Ayarlar(self.driver)
         ayarlar.ana_giris()
@@ -67,6 +72,7 @@ class TobetoAyarlar(softest.TestCase):
         self.soft_assert(self.assertEqual, YENI_SIFRE_MEVCUT_SIFRE_TEXT , actual_value, "HATA!!!")
         self.assert_all
 
+    @allure.title("Başarılı şifre değiştirme kontrolü")
     def test_basarili_password_change(self):
         ayarlar = Ayarlar(self.driver)
         ayarlar.ana_giris()
@@ -81,6 +87,7 @@ class TobetoAyarlar(softest.TestCase):
         self.soft_assert(self.assertEqual, SIFRE_GUNCELLENDI_TEXT , actual_value, "HATA!!!")
         self.assert_all
 
+    @allure.title("Üyeliği sonladır kısmının kontrolü")
     def test_üyeligi_sonlandir(self):
         ayarlar = Ayarlar(self.driver)
         ayarlar.ana_giris()
