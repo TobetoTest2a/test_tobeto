@@ -3,9 +3,13 @@ import json
 from API_constants import *
 import softest
 
+from tests_API.API_get_token import *
+
 class TestForeignLanguage(softest.TestCase):
 
     def test_control_add_language(self):
+      token_language = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1_mac)
+
       headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {token_language}'
@@ -26,6 +30,8 @@ class TestForeignLanguage(softest.TestCase):
 
 
     def test_control_added_language(self):
+        token_language = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1_mac)
+        
         headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {token_language}'
@@ -49,6 +55,7 @@ class TestForeignLanguage(softest.TestCase):
 
     
     def test_existing_language(self):
+       token_language = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1_mac)
        headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {token_language}'
@@ -65,6 +72,7 @@ class TestForeignLanguage(softest.TestCase):
         print("Beklenmeyen bir hata oluştu:", response.text)
 
     def test_control_delete_language(self):
+        token_language = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1_mac)
         headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {token_language}'
