@@ -5,7 +5,7 @@ from pages.constants.kayitOlConstance import *
 from pages.giris import *
 from pages.kayit_ol import *
 import softest
-
+import allure
 
 @pytest.mark.usefixtures("setup")
 class TestKayitOl(softest.TestCase,PageBase):
