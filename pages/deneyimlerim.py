@@ -131,7 +131,7 @@ class Deneyimlerim(PageBase):
         is_aciklamasi=self.driver.find_element(By.XPATH,EKLENEN_IS_ACIKLAMASI)
         return is_aciklamasi.text
     
-    def eklenen_tarih_asarligini_dondurur(self):
+    def eklenen_tarih_araligini_dondurur(self):
         eklenen_tarih_araligi=self.driver.find_element(By.XPATH,EKLENEN_TARIH_ARALIGI)
         return eklenen_tarih_araligi.text
 
@@ -153,23 +153,9 @@ class Deneyimlerim(PageBase):
         mesaj=self.wait_element_visibility(KURUM_ADI_DATA_MESAJI)
         return mesaj.text
 
-    def deneyimlerde_kayitli_kurum_isimlerini_dondurur(self):
-        try:
-            kayitli_deneyimler=self.driver.find_elements(TUM_DENEYIMLER)
-            for deneyim in kayitli_deneyimler:
-                print (deneyim.text)
-            
-        except InvalidArgumentException:
-            print(" birseyler hataliii ama ne?")
-
-    def kayitli_deneyim_basliklarini_yazdirir(self):
-        try:
-            deneyimler_basliklari=self.driver.find_elements(KAYDEDILEN_DENEYIM_BASLIKLARI)
-            for baslik in deneyimler_basliklari:
-                print (baslik.text)
-
-        except InvalidArgumentException:
-            print(" birseyler hataliii ama ne?")
+    def zorunlu_alan_hata_kontrolu(self):
+        mesaj=self.wait_element_visibility(UYARI_MESAJI)
+        return mesaj
 
 
     
