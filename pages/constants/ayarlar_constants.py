@@ -25,7 +25,7 @@ HAYIR_TEXT = "Hayır"
 EVET_TEXT = "Evet"
 
 
-GIRIS_MAIL = "tobeto.0003@gmail.com"
+GIRIS_MAIL = "tobeto.0004@gmail.com"
 MEVCUT_SIFRE = "TestTobeto1234"
 MEVCUT_SIFRE_2 = "TestTobeto123"
 SIFRE_5_KARAKTER = "12345"

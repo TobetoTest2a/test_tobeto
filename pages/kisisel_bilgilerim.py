@@ -141,6 +141,10 @@ class kisisel_bilgiler(PageBase):
     
     #####################
      
+    def kimlikno_alani(self):
+        tc_kimlik = self.wait_element_visibility(TC_KIMLIK_LOCATED)
+        tc_kimlikvalue = tc_kimlik.get_attribute("value")
+        return tc_kimlikvalue
 
     def gecersiz_tc_kimlik_no_gir(self):
         tc_kimlik = self.wait_element_visibility(TC_KIMLIK_LOCATED)
@@ -153,3 +157,7 @@ class kisisel_bilgiler(PageBase):
     def tc_kimlik_uyari_alani(self):
         tc_uyari_alan = self.wait_element_visibility(TC_KIMLIK_UYARI_LOCATED)
         return tc_uyari_alan.text
+       
+    ### def gecersiz_karakter_kontrolu(self):
+    ###   x = re.findall("[+]", GECERSIZ_TC_KIMLIK_DATA)
+    ###    print(x)

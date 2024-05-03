@@ -5,10 +5,12 @@ from pages.kisisel_bilgilerim import *
 from pages.giris import *
 from pages.PageBase import PageBase
 import softest
+import allure
 
 @pytest.mark.usefixtures("setup")
 class TestTobetoKisisel(softest.TestCase,PageBase):
-    
+
+    @allure.title("Kisisel Bilgilerim sayfasının arayüz kontrolü")
     def test_kisisel_bilgilerim_arayuz_kontrolu(self):
         
         page_base=PageBase(self.driver) 
@@ -47,6 +49,7 @@ class TestTobetoKisisel(softest.TestCase,PageBase):
         self.assert_all()
         profil_olustur.il_ilce_liste_kontrolu()
     
+    @allure.title("Profil fotoğrafının değiştirilmesi")
     def test_profil_fotografi_degisitirmesi(self):
         
         page_base=PageBase(self.driver) 
@@ -62,12 +65,13 @@ class TestTobetoKisisel(softest.TestCase,PageBase):
         self.soft_assert(self.assertEqual, profil_olustur.gozat_butonunu_ve_mesaji_goruntule() , GOZAT_TEXT, "12")
         self.assert_all()
         time.sleep(3)
-        file_path = r'C:\Users\mehme\Desktop\test_tobeto\uploads\resim1.png'
-        upload = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/main/section/div/div/div[2]/form/div/div[1]/div[2]/div/div/div/div[2]/div/div[2]/input[1]").send_keys(file_path)
+        file_path = ressm
+        upload = self.driver.find_element(By.XPATH, resimadres).send_keys(file_path)
         profil_olustur.dosyayi_yukle_butonuna_tikla()        
         time.sleep(10)
         profil_olustur.foto_cek2()
 
+    @allure.title("Doldurulması zorunlu alanların kontrolü")
     def test_doldurulmasi_zorunlu_alanlarin_kontrolu(self):
 
         page_base=PageBase(self.driver) 
@@ -88,7 +92,8 @@ class TestTobetoKisisel(softest.TestCase,PageBase):
         self.soft_assert(self.assertEqual, profil_olustur.mahalle_uyari_alani(),MAHALLE_UYARI_TEXT, "Uyari mesaji goruntulenemedi")
         self.soft_assert(self.assertEqual, profil_olustur.hakkimda_uyari_alani(),HAKKIMDA_UYARI_TEXT, "Uyari mesaji goruntulenemedi")
         self.assert_all()
-        
+    
+    @allure.title("TC kimlik alanına geçersiz karakter girilmesi")
     def test_tc_kimlik_gecersiz_karakter_girme(self):
 
         page_base=PageBase(self.driver) 
@@ -100,8 +105,12 @@ class TestTobetoKisisel(softest.TestCase,PageBase):
         profil_olustur.kullanici_adi_butonuna_tikla()
         profil_olustur.kullanici_adi_menusundeki_profil_bilgilerine_tikla()
         profil_olustur.gecersiz_tc_kimlik_no_gir()
+        self.soft_assert(self.assertEqual, profil_olustur.kimlikno_alani,EXPECTED_TEXT, "")
+        self.assert_all()
+        
         time.sleep(2)
     
+    @allure.title("TC kimlik alanına fazla karakter girilmesi")
     def test_tc_kimlik_onbir_haneden_fazla_karakter_girme(self):
 
         page_base=PageBase(self.driver) 

@@ -6,6 +6,7 @@ from pages.constants.deneyimlerimConstants import *
 from pages.giris import *
 from pages.PageBase import PageBase
 import softest
+import allure
 
 
 @pytest.mark.usefixtures("setup")
@@ -13,7 +14,7 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
    
 
     # Deneyimlerim sayfasine ulasir.
-    
+    @allure.title("Yeni bir deneyim ekleme kontrolü")
     def test_deneyimlerim_sayfasina_gider(self):       
         deneyimlerim= Deneyimlerim(self.driver) 
         giris=Giris(self.driver) 
@@ -24,11 +25,11 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         time.sleep(3)
         deneyimlerim.profil_bilgilerim_butonuna_tiklar()     
         time.sleep(3)
-        deneyimlerim.deneyimlerim_butonuna_tiklar()
-        
+        deneyimlerim.deneyimlerim_butonuna_tiklar()      
+        time.sleep(3)
 
     # Deneyimlerim sayfasine ulastigini dogrular.
-    
+    @allure.title("Deneyimlerim Sayfasina gider")
     def test_deneyimlerim_sayfasina_gittigini_dogrular(self):
         page_base=PageBase(self.driver) 
         self.test_deneyimlerim_sayfasina_gider()
@@ -41,7 +42,7 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         self.assert_all()
         
     # Basarili senaryo deneyim ekler.
-   
+    @allure.title("Basarili deneyim ekler")
     def test_basarili_deneyim_ekler(self):
         deneyimlerim= Deneyimlerim(self.driver)
 
@@ -68,7 +69,7 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         self.assert_all()
     
     # Calismaya Devam Ediyorum 
-   
+    @allure.title("Calismaya devam ediyorum butonu ")
     def test_basarili_deneyim_ekler(self):
         deneyimlerim= Deneyimlerim(self.driver)
 
@@ -95,7 +96,7 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         self.soft_assert(self.assertEqual,expected_mesaj,deneyimlerim.basari_mesaji(),"MESAJ Hatali!!")
         self.assert_all()
    
-
+    @allure.title("Eklenen deneyimleri dogrular")
     def test_eklenen_deneyim_dogrulanir(self):
         deneyimlerim= Deneyimlerim(self.driver)
         time.sleep(5)
@@ -110,11 +111,11 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         self.soft_assert(self.assertEqual,deneyimlerim.eklenen_sehir_dondurur(),DATA_SEHIR,"Kaydedilen Sehir adi hatalii!!!")
         time.sleep(3)
         self.soft_assert(self.assertEqual,deneyimlerim.is_aciklamasi_dondurur(),DATA_IS_ACIKLAMASI, "Kaydedilen is aciklamasi hatali!!")
-        self.soft_assert(self.assertEqual,deneyimlerim.eklenen_tarih_asarligini_dondurur(),EXPECTED_TARIH_ARALIGI, " Kaydedilen tarihler hatali!!")
+        self.soft_assert(self.assertEqual,deneyimlerim.eklenen_tarih_araligini_dondurur(),EXPECTED_TARIH_ARALIGI, " Kaydedilen tarihler hatali!!")
 
         self.assert_all()
 
-
+    @allure.title("Deneyim siler")
     def test_deneyim_siler(self):
         deneyimlerim= Deneyimlerim(self.driver)
         time.sleep(5)
@@ -132,19 +133,19 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         self.assert_all()
 
 
-    
-    def test_zorunlu_alanlar_eksik_girildiginde_hata_mesajlari_goruntulenir(self):
+    @allure.title("Zorunlu alan kontrolu")
+    def test_zorunlu_alanlar_eksik_girildiginde_hata_mesajlari_goruntulenir_fail(self):
         deneyimlerim= Deneyimlerim(self.driver)           
         
         self.test_deneyimlerim_sayfasina_gider()
         time.sleep(3)
         deneyimlerim.kaydet_butonuna_tiklar()
         time.sleep(3)
-        beklenen_zorunlu_alan_sayisi = int(5)
-        self.soft_assert(self.assertTrue, beklenen_zorunlu_alan_sayisi != deneyimlerim.zorunlu_alan_hata_kontrolu(), "BEKLENILEN POPUP GORUNTULENMEDI.")
+        beklenen_zorunlu_alan_sayisi = int(6)
+        self.soft_assert(self.assertTrue, beklenen_zorunlu_alan_sayisi == deneyimlerim.zorunlu_alan_hata_kontrolu(), "BEKLENILEN POPUP GORUNTULENMEDI.")
         self.assert_all()
 
-    
+    @allure.title("hata mesajı kontrolu")
     def test_kurumAdi_bes_karakterden_az_girildiginde_hata_verir(self):
         deneyimlerim= Deneyimlerim(self.driver)           
         
@@ -160,23 +161,6 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         self.assert_all()
 
     
-    def test_toplam_deneyim_sayisi_kontrol_eder(self):
-        deneyimlerim= Deneyimlerim(self.driver)           
-        
-        self.test_deneyimlerim_sayfasina_gider()
-        time.sleep(3)
-        self.driver.execute_script("window.scrollBy(0,600)","")
-        time.sleep(3)
-        deneyimlerim.deneyimlerde_kayitli_kurum_isimlerini_dondurur()
-    
-    def test_kaydedilen_deneyim_basliklarini_kontrol_eder(self):
-        deneyimlerim= Deneyimlerim(self.driver)           
-        
-        self.test_deneyimlerim_sayfasina_gider()
-        time.sleep(3)
-        self.driver.execute_script("window.scrollBy(0,600)","")
-        time.sleep(3)
-        deneyimlerim.kayitli_deneyim_basliklarini_yazdirir()
 
 
 
