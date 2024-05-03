@@ -4,10 +4,12 @@ from pages.yabanci_dillerim import *
 from pages.PageBase import PageBase
 from pages.giris import *
 import softest
+import allure
 
 @pytest.mark.usefixtures("setup")
 class TestTobetoYabanciDillerim(softest.TestCase,PageBase):
     
+    @allure.title("Yeni bir dil ekleme kontrolü")
     def test_yabanci_dil_ekle(self):
         giris = Giris(self.driver)
         yabanci_dillerim = Yabanci_dil_ekle(self.driver) #baska sayfadan cagırılan fonksiyon
@@ -25,7 +27,7 @@ class TestTobetoYabanciDillerim(softest.TestCase,PageBase):
         self.assert_all()
         
 
-    
+    @allure.title("İlgili alanların boş geçilmesi durumu")
     def test_yabanci_dil_bos_alan_kontrolu(self):
         giris = Giris(self.driver)
         yabanci_dillerim = Yabanci_dil_bos_gecme(self.driver)
@@ -41,7 +43,7 @@ class TestTobetoYabanciDillerim(softest.TestCase,PageBase):
         self.soft_assert(self.assertEqual, BLANK_MESSAGE_TEXT, yabanci_dillerim.doldurulmasi_zorunlu_alan_mesaji(), "HATALI MESAJ")
         self.assert_all()
 
-    
+    @allure.title("Yabancı dil silme kontrolü")
     def test_yabanci_dil_silme_kontrolu(self):
         giris = Giris(self.driver)
         yabanci_dillerim = Yabanci_dil_silme(self.driver)
