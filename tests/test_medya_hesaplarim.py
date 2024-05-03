@@ -5,11 +5,13 @@ from pages.yabanci_dillerim import *
 from pages.giris import *
 from pages.medyaHesaplarim import *
 import softest
+import allure
 
 @pytest.mark.usefixtures("setup")
 class TestTobetoMedyaHesaplarim(softest.TestCase):
     
     #PASS TEST
+    @allure.title("Yeni bir medya hesabı ekleme kontrolü")
     def test_medya_hesabi_ekle(self):
         giris = Giris(self.driver)
         yabanci_dillerim = Yabanci_dil_ekle(self.driver)
@@ -27,6 +29,7 @@ class TestTobetoMedyaHesaplarim(softest.TestCase):
         self.assert_all()
 
     #PASS TEST
+    @allure.title("İlgili alanların boş geçilmesi durumu")
     def test_medya_hesabi_bos_alan_kontrolu(self):
         giris = Giris(self.driver)
         yabanci_dillerim = Yabanci_dil_ekle(self.driver)
@@ -43,6 +46,7 @@ class TestTobetoMedyaHesaplarim(softest.TestCase):
         self.assert_all()
 
     #PASS TEST AND SCREENSHOT
+    @allure.title("Ekli olan medya hesaplarının kontrolü")
     def test_medya_hesabi_liste_kontrolu(self):
         giris = Giris(self.driver)
         yabanci_dillerim = Yabanci_dil_ekle(self.driver)
@@ -57,6 +61,7 @@ class TestTobetoMedyaHesaplarim(softest.TestCase):
         self.assert_all()
 
     #PASS TEST 
+    @allure.title("Var olan bir medya hesabını silme kontrolü")
     def test_medya_hesabi_silme_islemi(self):
         giris = Giris(self.driver)
         yabanci_dillerim = Yabanci_dil_ekle(self.driver)
@@ -73,6 +78,7 @@ class TestTobetoMedyaHesaplarim(softest.TestCase):
 
     
     #FAIL TEST
+    @allure.title("Var olan medya hesabını güncelleme işleminin kontrolü")
     def test_medya_hesabi_guncelle(self):
         giris = Giris(self.driver)
         yabanci_dillerim = Yabanci_dil_ekle(self.driver)
