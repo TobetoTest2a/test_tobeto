@@ -154,8 +154,11 @@ class Deneyimlerim(PageBase):
         return mesaj.text
 
     def zorunlu_alan_hata_kontrolu(self):
-        mesaj=self.wait_element_visibility(UYARI_MESAJI)
-        return mesaj
+        mesajlar=self.webelement_listesinden_string_listesi_ver(UYARI_MESAJI)
+        return len(mesajlar)
+
+
+        
 
 
     

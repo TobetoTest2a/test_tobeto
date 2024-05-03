@@ -75,7 +75,7 @@ class TestAPIDeneyimlerim(softest.TestCase):
 
     def test_DELETE_yeni_deneyim_siler(self):
         
-        end_point=base_url+"/experiences/3732"
+        end_point=base_url+"/experiences/3905"
         token= APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
 
         headers = {
