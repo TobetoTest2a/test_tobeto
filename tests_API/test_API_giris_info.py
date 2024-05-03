@@ -61,7 +61,7 @@ class TestAPI(softest.TestCase):
         expected_phoneNumber = "+905050000000"
     
         url = "https://api.tobeto.com/api/user-profile/my"
-        token = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_2, TOKEN_FİLE_PATH_2)
+        token = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_2, TOKEN_FİLE_PATH_2_mac)
     
     
         headers = {
