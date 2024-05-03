@@ -9,7 +9,10 @@ TOBETO_PAYLOAD_2 = {"identifier": "tobeto.0002@gmail.com",
                    "password": "TestTobeto1234"}
 
 TOKEN_FİLE_PATH_1 = r"tests_API\Token.txt\payload_1_jwt_token.txt"
+TOKEN_FİLE_PATH_1_mac = "tests_API/Token.txt/payload_1_jwt_token.txt"
+
 TOKEN_FİLE_PATH_2 = r"tests_API\Token.txt\payload_2_jwt_token.txt"
+TOKEN_FİLE_PATH_2_mac = "tests_API/Token.txt/payload_2_jwt_token.txt"
 
 #start social_media and language constants
 url_socialMedia = "https://api.tobeto.com/api/user-social-medias"
