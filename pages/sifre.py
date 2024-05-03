@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from pages.PageBase import PageBase
-from pages.constants.password_constans import *
+from pages.constants.sifre_constans import *
 import pyautogui
 
 

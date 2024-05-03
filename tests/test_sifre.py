@@ -1,8 +1,9 @@
 import re
 import pytest
 from selenium import webdriver
-from pages.password import *
+from pages.sifre import *
 import softest
+import allure
 
 
 @pytest.mark.usefixtures("setup")
@@ -12,6 +13,7 @@ class TestTobetoPassword(softest.TestCase):
     # def class_setup(self):
     #     self.password_sayfasi = Password(self.driver)
 
+    @allure.title("Şifre sıfırlama kontrolü")
     def test_sifre_sifirlama_basarili(self):
         self.password_sayfasi = Password(self.driver)
         self.password_sayfasi.sifremi_unuttum_butonuna_tikla()
@@ -37,6 +39,7 @@ class TestTobetoPassword(softest.TestCase):
         self.assert_all
         
 
+    @allure.title("Geçersiz mail ile şifre sıfırlama kontrolü")
     def test_sifre_sifirlama_gecersiz_mail(self):
         self.password_sayfasi = Password(self.driver)
         self.password_sayfasi.sifremi_unuttum_butonuna_tikla()
@@ -46,13 +49,15 @@ class TestTobetoPassword(softest.TestCase):
         self.soft_assert(self.assertEqual, SIFRE_GECERSIZ_MAIL_POPUP_TEXT , actual_value , "HATA!!!")
         self.assert_all
 
+    @allure.title("Geçersiz kullanıcı ile şifre sıfırlama kontrolü")
     def test_sifre_sifirlama_gecersiz_kullanici(self):
         self.password_sayfasi = Password(self.driver)
         self.password_sayfasi.sifremi_unuttum_butonuna_tikla()
         self.password_sayfasi.mail_input_gönder("tobeto1@gmail.com")
         self.password_sayfasi.gönder_butonuna_tikla()
         actual_value = self.password_sayfasi.toast_mesaji_bul_ve_içeriği_text_getir()
-        self.password_sayfasi.if_assert_fail_screenshot(actual_value, SIFRE_GECERSIZ_KULLANICI_POPUP_TEXT, SCREENSHOT_FOLDER)
+        #self.password_sayfasi.if_assert_fail_screenshot(actual_value, SIFRE_GECERSIZ_KULLANICI_POPUP_TEXT, SCREENSHOT_FOLDER)
+        assert actual_value == SIFRE_GECERSIZ_KULLANICI_POPUP_TEXT
 
     # # def test_sifre_sifirlama_basarili(self):
     # #  
