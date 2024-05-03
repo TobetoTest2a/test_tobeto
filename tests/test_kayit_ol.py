@@ -9,7 +9,8 @@ import allure
 
 @pytest.mark.usefixtures("setup")
 class TestKayitOl(softest.TestCase,PageBase):
-
+    
+    @allure.title("Kayit Olma Kontrolü. ")
     def test_basarili_kayit_ol(self):
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.kayitOl_biliglerini_doldurur()
@@ -17,14 +18,16 @@ class TestKayitOl(softest.TestCase,PageBase):
         kayit_ol_object.kaydetme_basarili()
         self.soft_assert(self.assertEqual, GORUNECEKTEXT , kayit_ol_object.kaydetme_basarili(), "MESAJ GORUNTULENEMEDİ.")
         self.assert_all()
-        
+    
+    @allure.title("Bilgiler boş geçildiginde uyari mesaji alma kontrolü")   
     def test_bilgiler_bos_gecildiginde_uyari_meajlari_goruntulenmesi_FAIL(self): # != SEKLİNDE YAZILDI
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.bos_kayit()  
         beklenen_zorunlu_alan_sayisi = int(5)
         self.soft_assert(self.assertTrue, beklenen_zorunlu_alan_sayisi == kayit_ol_object.zorunlu_alan_karsilastirma(), "BEKLENILEN POPUP GORUNTULENMEDI.")
         self.assert_all()
-        
+    
+    @allure.title("Gecersiz eposta ile giris yapildiginda uyari mesaji kontrolü")    
     def test_gecersiz_eposta_mesaji_goruntulenmesi(self):
        kayit_ol_object = KayitOlFonksiyonu(self.driver)
        kayit_ol_object.kayit_ol_biliglerini_epostasiz_doldurur()
@@ -33,19 +36,21 @@ class TestKayitOl(softest.TestCase,PageBase):
        self.soft_assert(self.assertEqual, kayit_ol_object.bos_eposta_uyari_mesaji_kontrolu() , BOSEPOSTA_TEXT, "BEKLENILEN UYARI MESAJI ALINAMADI.")
        self.assert_all()
 
+    @allure.title("Sifre eslesmedi kontrolü")
     def test_sifre_eslesmedi_popup_goruntulenmesi_FAIL(self):  
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.sifre_tekrari_yalnis_doldurulur()
         self.soft_assert(self.assertEqual, kayit_ol_object.sifre_eslesmedi_popup_kontrolu(), YALNIS_SIFRE_POPUP_XPATH_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {YALNIS_SIFRE_POPUP_XPATH_TEXT}")
         self.assert_all()
-        
+    @allure.title("Mevcut bir eposta ile giris yapildıgında uyari mesaji kontrolü")    
     def test_mevcut_eposta_popup_goruntulenmesi_FAIL(self):
          kayit_ol_object = KayitOlFonksiyonu(self.driver)
          kayit_ol_object.mevcut_eposta_ile_kayit()
          kayit_ol_object.mevcut_eposta_popup_kontrolu()
          self.soft_assert(self.assertEqual, kayit_ol_object.mevcut_eposta_popup_kontrolu(), MEVCUTSIFRE_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {MEVCUTSIFRE_TEXT}")
          self.assert_all()
-         
+    
+    @allure.title("Beklenenden uzun bir tel no girildiginde uyari vermesinin kontrolu.")     
     def test_uzun_telefonNum_karakter_sayisi_uyarisi_kontrolu(self):
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.kayitOl_biliglerini_doldurur()
@@ -56,7 +61,8 @@ class TestKayitOl(softest.TestCase,PageBase):
         kayit_ol_object.uzun_telNo_ile_sozlesmeler_sayfasini_doldurulur()
         self.soft_assert(self.assertEqual, kayit_ol_object.uzun_telNo_uyarisi_kontrolu(), UZUN_TELNO_UYARISI_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {UZUN_TELNO_UYARISI_TEXT}")
         self.assert_all()
-        
+    
+    @allure.title("Normalden az bir tel no girildiginde uyari meaji vermesinin kontrolu")    
     def test_az_telefonNum_karakter_sayisi_uyarisi_kontrolu(self):
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.kayitOl_biliglerini_doldurur()
@@ -64,6 +70,7 @@ class TestKayitOl(softest.TestCase,PageBase):
         self.soft_assert(self.assertEqual, kayit_ol_object.kisa_telNo_uyarisi_kontrolu(), KISA_TELNO_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {KISA_TELNO_TEXT}")
         self.assert_all()
         
+    @allure.title("Kayitli bir tel no ile giris yapildiginda uyari meaji vermesinin kontrolu.")
     def test_kayitli_telNo_uyari_mesaji_kontrolu_FAIL(self):
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.kayitOl_biliglerini_doldurur()
