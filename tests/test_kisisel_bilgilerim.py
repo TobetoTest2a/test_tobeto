@@ -62,8 +62,8 @@ class TestTobetoKisisel(softest.TestCase,PageBase):
         self.soft_assert(self.assertEqual, profil_olustur.gozat_butonunu_ve_mesaji_goruntule() , GOZAT_TEXT, "12")
         self.assert_all()
         time.sleep(3)
-        file_path = r'C:\Users\mehme\Desktop\test_tobeto\uploads\resim1.png'
-        upload = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/main/section/div/div/div[2]/form/div/div[1]/div[2]/div/div/div/div[2]/div/div[2]/input[1]").send_keys(file_path)
+        file_path = ressm
+        upload = self.driver.find_element(By.XPATH, resimadres).send_keys(file_path)
         profil_olustur.dosyayi_yukle_butonuna_tikla()        
         time.sleep(10)
         profil_olustur.foto_cek2()
@@ -100,6 +100,9 @@ class TestTobetoKisisel(softest.TestCase,PageBase):
         profil_olustur.kullanici_adi_butonuna_tikla()
         profil_olustur.kullanici_adi_menusundeki_profil_bilgilerine_tikla()
         profil_olustur.gecersiz_tc_kimlik_no_gir()
+        self.soft_assert(self.assertEqual, profil_olustur.kimlikno_alani,EXPECTED_TEXT, "")
+        self.assert_all()
+        
         time.sleep(2)
     
     def test_tc_kimlik_onbir_haneden_fazla_karakter_girme(self):

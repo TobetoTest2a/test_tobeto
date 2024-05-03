@@ -66,3 +66,8 @@ ONIKI_HANELI_TC_KIMLIK = "111111111111"
 
 TC_KIMLIK_UYARI_LOCATED = (By.XPATH, "//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[6]/span[2]")
 TC_KIMLIK_FAZLA_KARAKTER_UYARI_TEXT = "TC Kimlik Numarası 11 Haneden Fazla olamaz"
+
+ressm = r'C:\Users\mehme\Desktop\test_tobeto\uploads\resim1.png'
+resimadres = "/html/body/div[1]/div/main/section/div/div/div[2]/form/div/div[1]/div[2]/div/div/div/div[2]/div/div[2]/input[1]"
+
+EXPECTED_TEXT = ""
