@@ -142,7 +142,8 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         deneyimlerim.kaydet_butonuna_tiklar()
         time.sleep(3)
         beklenen_zorunlu_alan_sayisi = int(6)
-        self.soft_assert(self.assertTrue, beklenen_zorunlu_alan_sayisi == deneyimlerim.zorunlu_alan_hata_kontrolu(), "BEKLENILEN POPUP GORUNTULENMEDI.")
+        print(deneyimlerim.zorunlu_alan_hata_kontrolu())
+        self.soft_assert(self.assertEqual, beklenen_zorunlu_alan_sayisi , deneyimlerim.zorunlu_alan_hata_kontrolu(), "BEKLENILEN POPUP GORUNTULENMEDI.")
         self.assert_all()
 
     @allure.title("hata mesajı kontrolu")
