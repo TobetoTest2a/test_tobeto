@@ -2,27 +2,35 @@ import pytest
 import requests
 import json
 import softest
-from tests_API.API_constants import *
+from API_get_token import *
+from API_constants import *
 
 
 class TestAPIDeneyimlerim(softest.TestCase): 
         
     
     def test_GET_kayitli_deneyimleri_getir(self):
-        
+       
         end_point= base_url+ "/experience/my"
-
+        token= APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
         headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {token}'
         }
 
+    
         response = requests.get(end_point, headers=headers)
         
         response_data = response.json() # JSON yanıtını işle
        
         # İlk öğeyi seç
         user_data = response_data[0] 
+        expected_corporationName= "deneme"
+        expected_position= "product owner"
+        expected_sector= "Finans"
+        expected_country= "Ağrı"
+        expected_StartDate= "2024-04-24"
+        expected_EndDate=None   
         
         
         if response.status_code == 200:
@@ -37,9 +45,9 @@ class TestAPIDeneyimlerim(softest.TestCase):
 
 
     def test_POST_yeni_deneyim_ekler(self):
-
+       
         end_point=base_url+"/experiences"
-        token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjkwNzcsImlhdCI6MTcxNDQ2MzQwNSwiZXhwIjoxNzE0NjM2MjA1fQ.2Dywvgm65jcJSiRPSc_EbmGKEzEaDwQsGOZjwV-Qrik"
+        token= APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
        
         headers = {
         'Content-Type': 'application/json',
@@ -65,3 +73,20 @@ class TestAPIDeneyimlerim(softest.TestCase):
             print("Lütfen girdiginiz degerleri kontrol edin!")
 
 
+    def test_DELETE_yeni_deneyim_siler(self):
+        
+        end_point=base_url+"/experiences/3732"
+        token= APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
+
+        headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {token}'
+
+        }
+        response = requests.delete(end_point,headers=headers)
+
+        if response.status_code == 200:
+            print(" !! Basarili !! ")
+
+        else:
+            print("Lütfen girdiginiz degerleri kontrol edin!")

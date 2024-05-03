@@ -13,7 +13,8 @@ class KayitOlFonksiyonu(PageBase):
         super().__init__(driver)
         self.driver = driver
         time.sleep(10)    
-     
+
+   
     def kayitOl_biliglerini_doldurur(self):
         self.wait_element_visibility(ILKKAYITOL).click()
         self.wait_element_visibility(AD).send_keys(kullanici_ad)
@@ -24,7 +25,8 @@ class KayitOlFonksiyonu(PageBase):
         time.sleep(10)
         self.wait_element_visibility(SIFRETEKRAR).send_keys(valid_password)
         self.wait_element_visibility(KAYITOL).click()
-        
+
+
     def sozlesmeler_sayfasini_doldurur(self):
         self.wait_element_visibility(ACIKRIZAMETNİ).click()
         self.wait_element_visibility(UYELİKSOZLESMESİ).click()

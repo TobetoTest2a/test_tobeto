@@ -1,13 +1,15 @@
 import requests
 import json
+import softest
+from API_constants import *
+from API_get_token import APIAutoToken
 
-class TestAPI():
-    def valid_login():
+class TestAPI(softest.TestCase):
+    def test_valid_login():
         expected_email = "tobeto.0002@gmail.com"
         # Gerçek API endpoint URL'si
         url = "https://api.tobeto.com/api/auth/local"
-
-        
+  
         payload = {"identifier":"tobeto.0002@gmail.com",   
         "password":"TestTobeto1234"}
 
@@ -28,7 +30,7 @@ class TestAPI():
         else:
          print("Authentication API isteği başarisiz oldu:", response.status_code)
          
-    def invalid_login(): 
+    def test_invalid_login(): 
         expected_username = "tobeto.0002@gmail.com"
         
         url = "https://api.tobeto.com/api/auth/local"
@@ -39,7 +41,7 @@ class TestAPI():
        
         payload_str = json.dumps(payload) 
 
-        # POST isteği yap
+        # POST isteği yap #header ı karsiya sorgunun json oldugunu belirtmek için yazıyoruz
         response = requests.post(url, data = payload_str, headers={'Content-Type': 'application/json'}) #benim gonderdigim header json
 
         # API'den gelen yanıtı kontrol et
@@ -53,13 +55,13 @@ class TestAPI():
         else:
          print("Invalid username API isteği sonucu başarisiz dondu:", response.status_code)
     
-    def user_info_isValid():
+    def test_user_info_isValid():
         expected_username = "Test"
         expected_surname = "Tobeto"
         expected_phoneNumber = "+905050000000"
     
         url = "https://api.tobeto.com/api/user-profile/my"
-        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mjk0NTEsImlhdCI6MTcxNDMzNDExOCwiZXhwIjoxNzE0NTA2OTE4fQ.jXCfsiBqMXqBBnkbuReZNRlNXOehjYP7tOJIa5gHT1c"
+        token = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_2, TOKEN_FİLE_PATH_2)
     
     
         headers = {
@@ -70,6 +72,9 @@ class TestAPI():
         response = requests.get(url, headers=headers)
         print(response.text)
         print("--------------------------------------------")
+        
+       
+        
     # API'den gelen yanıtı kontrol et
         if response.status_code == 200:
             
@@ -94,12 +99,13 @@ class TestAPI():
             print("Authentication API sorgusunda geçerli bilgi isteği sonucunda 200 durum kodu görüldü.")
         else:
             print("Geçersiz kullanici adi API isteği başarisiz oldu:", response.status_code)
+            
+            
+            
+   
 
-         
-print("****************************************")
-TestAPI.valid_login()
-print("****************************************")
-TestAPI.invalid_login()
-print("****************************************")
-TestAPI.user_info_isValid()
-print("****************************************")
+TestAPI.test_valid_login()
+
+TestAPI.test_invalid_login()
+
+TestAPI.test_user_info_isValid()

@@ -13,7 +13,7 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
    
 
     # Deneyimlerim sayfasine ulasir.
-    @pytest.mark.skip
+    
     def test_deneyimlerim_sayfasina_gider(self):       
         deneyimlerim= Deneyimlerim(self.driver) 
         giris=Giris(self.driver) 
@@ -24,11 +24,11 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         time.sleep(3)
         deneyimlerim.profil_bilgilerim_butonuna_tiklar()     
         time.sleep(3)
-        deneyimlerim.deneyimlerim_butonuna_tiklar()
-        
+        deneyimlerim.deneyimlerim_butonuna_tiklar()      
+        time.sleep(3)
 
     # Deneyimlerim sayfasine ulastigini dogrular.
-    @pytest.mark.skip
+    
     def test_deneyimlerim_sayfasina_gittigini_dogrular(self):
         page_base=PageBase(self.driver) 
         self.test_deneyimlerim_sayfasina_gider()
@@ -41,7 +41,7 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         self.assert_all()
         
     # Basarili senaryo deneyim ekler.
-    @pytest.mark.skip
+   
     def test_basarili_deneyim_ekler(self):
         deneyimlerim= Deneyimlerim(self.driver)
 
@@ -68,7 +68,7 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         self.assert_all()
     
     # Calismaya Devam Ediyorum 
-    @pytest.mark.skip
+   
     def test_basarili_deneyim_ekler(self):
         deneyimlerim= Deneyimlerim(self.driver)
 
@@ -94,7 +94,8 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         expected_mesaj="• Deneyim eklendi."
         self.soft_assert(self.assertEqual,expected_mesaj,deneyimlerim.basari_mesaji(),"MESAJ Hatali!!")
         self.assert_all()
-    @pytest.mark.skip
+   
+
     def test_eklenen_deneyim_dogrulanir(self):
         deneyimlerim= Deneyimlerim(self.driver)
         time.sleep(5)
@@ -112,7 +113,8 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         self.soft_assert(self.assertEqual,deneyimlerim.eklenen_tarih_asarligini_dondurur(),EXPECTED_TARIH_ARALIGI, " Kaydedilen tarihler hatali!!")
 
         self.assert_all()
-    @pytest.mark.skip    
+
+
     def test_deneyim_siler(self):
         deneyimlerim= Deneyimlerim(self.driver)
         time.sleep(5)
@@ -130,7 +132,7 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         self.assert_all()
 
 
-    @pytest.mark.skip
+    
     def test_zorunlu_alanlar_eksik_girildiginde_hata_mesajlari_goruntulenir(self):
         deneyimlerim= Deneyimlerim(self.driver)           
         
@@ -138,11 +140,11 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         time.sleep(3)
         deneyimlerim.kaydet_butonuna_tiklar()
         time.sleep(3)
-        beklenen_zorunlu_alan_sayisi = int(5)
+        beklenen_zorunlu_alan_sayisi = int(6)
         self.soft_assert(self.assertTrue, beklenen_zorunlu_alan_sayisi != deneyimlerim.zorunlu_alan_hata_kontrolu(), "BEKLENILEN POPUP GORUNTULENMEDI.")
         self.assert_all()
 
-    @pytest.mark.skip
+    
     def test_kurumAdi_bes_karakterden_az_girildiginde_hata_verir(self):
         deneyimlerim= Deneyimlerim(self.driver)           
         
@@ -157,7 +159,7 @@ class TestDeneyimlerim(softest.TestCase,PageBase):
         self.soft_assert(self.assertEqual,expected_mesaj , deneyimlerim.kurum_adi_hata_mesaji_dondurur(),"Beklenen Mesaj Goruntulenemedi!!")
         self.assert_all()
 
-    @pytest.mark.skip
+    
     def test_toplam_deneyim_sayisi_kontrol_eder(self):
         deneyimlerim= Deneyimlerim(self.driver)           
         
