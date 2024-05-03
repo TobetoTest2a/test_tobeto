@@ -4,8 +4,6 @@ import json
 import softest
 from tests_API.API_constants import *
 from API_get_token import *
-from API_constants import *
-import API_get_token
 
 
 class TestAPI_kisisel_bilgilerim(softest.TestCase):
@@ -13,8 +11,7 @@ class TestAPI_kisisel_bilgilerim(softest.TestCase):
     def test_GET_kisisel_bilgilerim(self):
 
         end_point = base_url + "/user-profile/my"
-        token= APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
-
+        token = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
         headers = {
             'Content-Type': 'application/json',
             'Authorization': f'Bearer {token}'
@@ -40,7 +37,7 @@ class TestAPI_kisisel_bilgilerim(softest.TestCase):
     def test_POST_kisisel_bilgilerim(self):
 
         end_point = base_url + "/user-profile/identity-number"
-        token= APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
+        token = APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
         headers = {
             'Content-Type': 'application/json',
             'Authorization': f'Bearer {token}'
