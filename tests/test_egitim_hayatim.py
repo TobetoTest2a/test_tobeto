@@ -5,10 +5,12 @@ from pages.giris import *
 from pages.PageBase import PageBase
 import softest
 from pages.yabanci_dillerim import Yabanci_dil_ekle
+import allure
 
 @pytest.mark.usefixtures("setup")
 class TestEgitimHayatim(softest.TestCase,PageBase):
 
+    @allure.title("Eğitim hayatım boş geçme")
     def test1_egitim_hayatim_bos_gecme(self): 
        
         giris=Giris(self.driver)  
@@ -23,6 +25,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         egitimHayatim.doldurulmasi_zorunlu_alan_uyari_mesaji()
         egitimHayatim.ekran_foto_cek()
     
+    @allure.title("Üniversite adini tek harf olarak yazma hatası")
     def test2_universite_adini_tek_harf_olarak_yazma_hatasi(self):
         giris=Giris(self.driver)  
         profile_tikla=Yabanci_dil_ekle(self.driver)
@@ -45,6 +48,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         egitimHayatim.universite_adi_en_az_2_harften_olusmalidir_uyari_mesaji()
         egitimHayatim.ekran_foto_cek()
     
+    @allure.title("Bölüm adını tek harf olarak yazma hatası")
     def test3_bolum_adini_tek_harf_olarak_yazma_hatasi(self):
         giris=Giris(self.driver)  
         profile_tikla=Yabanci_dil_ekle(self.driver)
@@ -68,6 +72,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         egitimHayatim.bolum_adi_en_az_2_harften_olusmalidir_uyari_mesaji()
         egitimHayatim.ekran_foto_cek()
 
+    @allure.title("Eğitim-hayatım ekle")
     def test4_egitim_hayatim_ekle(self):
 
         giris=Giris(self.driver)  
@@ -92,6 +97,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         egitimHayatim.sayfayi_asagi_kaydir()
         egitimHayatim.ekran_foto_cek()
     
+    @allure.title("Üniversiteye devam ediyorum butonuna tıkla")
     def test5_universiteye_devam_ediyorum_butonuna_tikla(self):
 
         giris=Giris(self.driver)  
@@ -116,6 +122,7 @@ class TestEgitimHayatim(softest.TestCase,PageBase):
         egitimHayatim.sayfayi_asagi_kaydir()
         egitimHayatim.ekran_foto_cek()
     
+    @allure.title("Kayıt edilen üniversite bilgilerini silme")
     def test6_kayit_edilen_universite_bilgilerini_silme(self):
         giris=Giris(self.driver)  
         profile_tikla=Yabanci_dil_ekle(self.driver)
