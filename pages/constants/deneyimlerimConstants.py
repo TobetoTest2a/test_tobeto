@@ -21,7 +21,9 @@ CALISMAYA_DEVAM_EDIYORUM_BUTONU="//*[@id='__next']/div/main/section/div/div/div[
 KAYDEDILEN_DENEYIM_BASLIKLARI=(By.CLASS_NAME,"grade-details-header")
 TUM_DENEYIMLER=(By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/div/div/div/div/span[2]") # elementsss 
 
-UYARI_MESAJI="//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[1]/span" #XPATH
+
+
+UYARI_MESAJI=(By.CLASS_NAME,"text-danger") #XPATH
 KAYDET_BUTONU="//*[@id='__next']/div/main/section/div/div/div[2]/form/button" #XPATH
 DENEYIM_EKLENDI_MESAJI="toast-body"
 
@@ -51,11 +53,11 @@ DATA_POZISYON="YAZILIM TEST UZMANI"
 DATA_SEKTOR="YAZILIM"
 DATA_SEHIR="İstanbul"
 DATA_IS_BASLANGIC="01.01.2020" #gg.aa.yyyy
-DATA_IS_BITIS="31.12.2023"
+DATA_IS_BITIS="30.04.2020"
 DATA_IS_ACIKLAMASI="YAZILIM TESTLERINI OTOMASYONA DOKMEK"
 DATA_IS_GIRIS_YILI="2020"
 DATA_IS_BASLANGIC_AY="Ocak"
 DATA_IS_BITIS_YIL="2023"
 DATA_IS_BITIS_AY="Nisan"
-EXPECTED_TARIH_ARALIGI="01.01.2020 - 27.03.2023"
+EXPECTED_TARIH_ARALIGI="01.01.2020 - Devam Ediyor"
 DATA_GECERSIZ_KURUM_ADI="dene"

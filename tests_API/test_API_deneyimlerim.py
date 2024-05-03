@@ -25,11 +25,11 @@ class TestAPIDeneyimlerim(softest.TestCase):
        
         # İlk öğeyi seç
         user_data = response_data[0] 
-        expected_corporationName= "deneme"
-        expected_position= "product owner"
-        expected_sector= "Finans"
-        expected_country= "Ağrı"
-        expected_StartDate= "2024-04-24"
+        expected_corporationName= "ENOCTA"
+        expected_position= "YAZILIM TEST UZMANI"
+        expected_sector= "YAZILIM"
+        expected_country= "İstanbul"
+        expected_StartDate= "2020-01-01"
         expected_EndDate=None   
         
         
