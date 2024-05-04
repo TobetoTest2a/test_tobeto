@@ -11,24 +11,25 @@ import allure
 class TestKayitOl(softest.TestCase,PageBase):
     
     @allure.title("Kayit Olma Kontrolü. ")
-    def test_basarili_kayit_ol(self):
+    def test1_basarili_kayit_ol(self):
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.kayitOl_biliglerini_doldurur()
         kayit_ol_object.sozlesmeler_sayfasini_doldurur()
         kayit_ol_object.kaydetme_basarili()
+        time.sleep(5)
         self.soft_assert(self.assertEqual, GORUNECEKTEXT , kayit_ol_object.kaydetme_basarili(), "MESAJ GORUNTULENEMEDİ.")
         self.assert_all()
     
     @allure.title("Bilgiler boş geçildiginde uyari mesaji alma kontrolü")   
-    def test_bilgiler_bos_gecildiginde_uyari_meajlari_goruntulenmesi_FAIL(self): # != SEKLİNDE YAZILDI
+    def test2_bilgiler_bos_gecildiginde_uyari_meajlari_goruntulenmesi_FAIL(self): 
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.bos_kayit()  
         beklenen_zorunlu_alan_sayisi = int(5)
-        self.soft_assert(self.assertTrue, beklenen_zorunlu_alan_sayisi == kayit_ol_object.zorunlu_alan_karsilastirma(), "BEKLENILEN POPUP GORUNTULENMEDI.")
+        self.soft_assert(self.assertEqual, beklenen_zorunlu_alan_sayisi, kayit_ol_object.zorunlu_alan_karsilastirma(), "BEKLENILEN POPUP GORUNTULENMEDI.")
         self.assert_all()
     
     @allure.title("Gecersiz eposta ile giris yapildiginda uyari mesaji kontrolü")    
-    def test_gecersiz_eposta_mesaji_goruntulenmesi(self):
+    def test3_gecersiz_eposta_mesaji_goruntulenmesi(self):
        kayit_ol_object = KayitOlFonksiyonu(self.driver)
        kayit_ol_object.kayit_ol_biliglerini_epostasiz_doldurur()
        kayit_ol_object = KayitOlFonksiyonu(self.driver)
@@ -37,13 +38,13 @@ class TestKayitOl(softest.TestCase,PageBase):
        self.assert_all()
 
     @allure.title("Sifre eslesmedi kontrolü")
-    def test_sifre_eslesmedi_popup_goruntulenmesi_FAIL(self):  
+    def test4_sifre_eslesmedi_popup_goruntulenmesi_FAIL(self):  
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.sifre_tekrari_yalnis_doldurulur()
         self.soft_assert(self.assertEqual, kayit_ol_object.sifre_eslesmedi_popup_kontrolu(), YALNIS_SIFRE_POPUP_XPATH_TEXT, f"BEKLENILEN POPUP GORUNTULENMEDI. Beklenen: {YALNIS_SIFRE_POPUP_XPATH_TEXT}")
         self.assert_all()
     @allure.title("Mevcut bir eposta ile giris yapildıgında uyari mesaji kontrolü")    
-    def test_mevcut_eposta_popup_goruntulenmesi_FAIL(self):
+    def test5_mevcut_eposta_popup_goruntulenmesi_FAIL(self):
          kayit_ol_object = KayitOlFonksiyonu(self.driver)
          kayit_ol_object.mevcut_eposta_ile_kayit()
          kayit_ol_object.mevcut_eposta_popup_kontrolu()
@@ -51,7 +52,7 @@ class TestKayitOl(softest.TestCase,PageBase):
          self.assert_all()
     
     @allure.title("Beklenenden uzun bir tel no girildiginde uyari vermesinin kontrolu.")     
-    def test_uzun_telefonNum_karakter_sayisi_uyarisi_kontrolu(self):
+    def test6_uzun_telefonNum_karakter_sayisi_uyarisi_kontrolu(self):
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.kayitOl_biliglerini_doldurur()
         button_enable_mi = kayit_ol_object.is_koyitOl_button_enabled()
@@ -63,7 +64,7 @@ class TestKayitOl(softest.TestCase,PageBase):
         self.assert_all()
     
     @allure.title("Normalden az bir tel no girildiginde uyari meaji vermesinin kontrolu")    
-    def test_az_telefonNum_karakter_sayisi_uyarisi_kontrolu(self):
+    def test7_az_telefonNum_karakter_sayisi_uyarisi_kontrolu(self):
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.kayitOl_biliglerini_doldurur()
         kayit_ol_object.kisa_telNo_ile_sozlesmeler_sayfasini_doldurulur()
@@ -71,7 +72,7 @@ class TestKayitOl(softest.TestCase,PageBase):
         self.assert_all()
         
     @allure.title("Kayitli bir tel no ile giris yapildiginda uyari meaji vermesinin kontrolu.")
-    def test_kayitli_telNo_uyari_mesaji_kontrolu_FAIL(self):
+    def test8_kayitli_telNo_uyari_mesaji_kontrolu_FAIL(self):
         kayit_ol_object = KayitOlFonksiyonu(self.driver)
         kayit_ol_object.kayitOl_biliglerini_doldurur()
         kayit_ol_object.mevcut_telNo_ile_sozlesmeler_sayfasi_doldurulur()
