@@ -23,7 +23,7 @@ TUM_DENEYIMLER=(By.XPATH,"//*[@id='__next']/div/main/section/div/div/div[2]/div/
 
 
 
-UYARI_MESAJI=(By.CLASS_NAME,"text-danger") #XPATH
+UYARI_MESAJI=(By.CLASS_NAME,"text-danger") 
 KAYDET_BUTONU="//*[@id='__next']/div/main/section/div/div/div[2]/form/button" #XPATH
 DENEYIM_EKLENDI_MESAJI="toast-body"
 

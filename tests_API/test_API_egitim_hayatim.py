@@ -1,38 +1,92 @@
-
-import requests
 import pytest
+import requests
+import json
+import softest
+from API_get_token import *
+from API_constants import *
 
-class TestTobetoAPI():
-    def __init__(self, token):
-        self.base_url = "https://api.tobeto.com/api"
-        self.token = token
-        self.headers = {
-            "Authorization": f"Bearer {token}"
+
+class TestAPIEgitimlerim(softest.TestCase): 
+        
+    
+    def test_GET_kayitli_egitimleri_getir(self):
+       
+        end_point= base_url+ "/educations"
+        token= APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
+
+        headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {token}'
         }
 
-    def test_get_egitimler(self):
-        url = f"{self.base_url}/educations"
-        cevap = requests.get(url, headers=self.headers)
-        return cevap.json() if cevap.status_code == 200 else None
-
-    def test_main():
-    # API token
-        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjkwNzcsImlhdCI6MTcxNDUwNzU3NiwiZXhwIjoxNzE0NjgwMzc2fQ.YD88QvjT7Gai-OoqwV4Nqc0vLWd4kfHOg3jsyVEB_9w"
-     
-    # TobetoApı yi başlatıyorum.
-        api = TestTobetoAPI(token)
     
-    # eğitim verilerini aldım.
-        egitimler = api.test_get_egitimler()
-    
-   
-        if egitimler:
-            print("Egitim verileri:")
-            print(egitimler)
-        else:
-            print("Eğitim verileri alınırken bir hata oluştu.")
-
-        # if __name__ == "__main__":
+        response = requests.get(end_point, headers=headers)
         
-TestTobetoAPI.test_main()
+        response_data = response.json() # JSON yanıtını işle
+       
+        # İlk öğeyi seç
+        user_data = response_data[0] 
+
+        expected_educationStatus= "Lisans"
+        expected_university= "İTÜ" 
+        expected_department= "TEST MÜHENDİSİ"
+        expected_startDate= "2023"
+        expected_endDate= None
+        
+        
+        if response.status_code == 200:
+            print(" !! Basarili !! ")
+            assert( expected_educationStatus == user_data['EducationStatus'] and expected_university == user_data['University'] and
+                   expected_department == user_data['Department'] and expected_startDate == user_data['StartDate'] and
+                   expected_endDate == user_data['EndDate'])
+            
+                
+        else:
+            print("Lütfen girdiginiz degerleri kontrol edin!")
+
+
+    def test_POST_yeni_egitim_ekler(self):
+       
+        end_point=base_url+"/educations"
+        token= APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
+       
+        headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {token}'
+        }
+
+        #test data
+        payload={"data":{"University":"marmara","Department":"muhendislik","Language":"Türkçe","StartDate":"2020","EducationStatus":"Lisans","EndDate":"2024"}}
+
+        # JSON verisini stringe dönüştür
+        payload_str = json.dumps(payload) # Gönderilecek JSON verisi str olmalı cunku Post metodu dtring aliyor
+        
+        # POST isteği yap
+        response = requests.post(end_point, data = payload_str, headers=headers) #benim gonderdigim header json
+        print(response.text)
+        
+        if response.status_code == 200:
+            print(" !! Basarili !! ")
+
+        else:
+            print("Lütfen girdiginiz degerleri kontrol edin!")
+
+
+    def test_DELETE_egitim_siler(self):
+        
+        end_point=base_url+"/educations/6210"
+        token= APIAutoToken.API_get_token(TOBETO_AUTH_URL, TOBETO_PAYLOAD_1, TOKEN_FİLE_PATH_1)
+
+        headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {token}'
+
+        }
+        response = requests.delete(end_point,headers=headers)
+
+        if response.status_code == 200:
+            print(" !! Basarili !! ")
+
+        else:
+            print("Lütfen girdiginiz degerleri kontrol edin!")
 
