@@ -34,7 +34,7 @@ class KayitOlFonksiyonu(PageBase):
         arama_izni = self.wait_element_visibility(ARAMAIZNI)
         arama_izni.click()
         telno_yaz =self.wait_element_visibility(TELNO)
-        telno_yaz.send_keys(telno)
+        telno_yaz.send_keys("9195342036")
         time.sleep(25)
         self.wait_element_visibility(DEVAMETBUTTON).click()
         

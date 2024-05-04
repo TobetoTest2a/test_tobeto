@@ -35,8 +35,8 @@ valid_password = "123456"
 BASARILIGIRIS_URL = "https://tobeto.com/e-posta-dogrulama?registerType=registerForm"
 TIKISARET = (By.XPATH, "//*[@id='__next']/div/main/section/div/div/div/div/svg/path[1]")
 KAYITTEXTI = (By.CLASS_NAME, "success-payment-text")
-GORULECEKTEXT_LOCATE = (By.CLASS_NAME, "success-payment-text")
-GORUNECEKTEXT = "Tobeto Platform'a kaydınız başarıyla gerçekleşti."
+GORULECEKTEXT_LOCATE = (By.XPATH, "/html/body/div[1]/div/main/section/div/div/div/div/span") 
+GORUNECEKTEXT = "Tobeto Platform'a kaydınız başarıyla gerçekleşti.\nGiriş yapabilmek için e-posta adresinize iletilen doğrulama linkine tıklayarak hesabınızı aktifleştirin."
 
 #uyarı metni: doldurulması zorunlu alan
 ZORUNLU1 = (By.XPATH, "//*[@id='__next']/div/main/section/div/div/div[1]/div/div/form/p[1]")
